@@ -1,54 +1,31 @@
 package com.ticketing.event.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import lombok.extern.slf4j.Slf4j;
 
-/**
- * Vendor entity representing a vendor in the ticketing system.
- */
-@Entity
-public class Vendor {
+@Slf4j
+public class Vendor implements Runnable {
+    private final TicketPool ticketPool;
+    private final String eventName;
+    private final int releaseRate;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Unique identifier for the vendor
-
-    private String name; // Name of the vendor
-
-    // Default Constructor
-    public Vendor() {
+    public Vendor(TicketPool ticketPool, String eventName, int releaseRate) {
+        this.ticketPool = ticketPool;
+        this.eventName = eventName;
+        this.releaseRate = releaseRate;
     }
 
-    // Parameterized Constructor
-    public Vendor(String name) {
-        this.name = name;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Override toString for better debugging and logging
     @Override
-    public String toString() {
-        return "Vendor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public void run() {
+        while (true) {
+            ticketPool.addTickets(eventName, releaseRate);
+            log.info("Vendor {} released {} tickets for event: {}", Thread.currentThread().getName(), releaseRate, eventName);
+            try {
+                Thread.sleep(1000); // 1-second interval
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                log.error("Vendor thread interrupted for event: {}", eventName, e);
+                break;
+            }
+        }
     }
 }

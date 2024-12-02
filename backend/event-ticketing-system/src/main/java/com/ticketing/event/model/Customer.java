@@ -1,54 +1,34 @@
 package com.ticketing.event.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import lombok.extern.slf4j.Slf4j;
 
-/**
- * Customer entity representing the customer data in the ticketing system.
- */
-@Entity
-public class Customer {
+@Slf4j
+public class Customer implements Runnable {
+    private final TicketPool ticketPool;
+    private final String event;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Unique identifier for the customer
-
-    private String name; // Name of the customer
-
-    // Default Constructor
-    public Customer() {
+    public Customer(TicketPool ticketPool, String event) {
+        this.ticketPool = ticketPool;
+        this.event = event;
     }
 
-    // Parameterized Constructor
-    public Customer(String name) {
-        this.name = name;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // Override toString for better debugging and logging
     @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public void run() {
+        while (true) {
+            String ticket = ticketPool.removeTicket(event);
+            if (ticket != null) {
+                log.info("{} purchased {}", Thread.currentThread().getName(), ticket);
+            } else {
+                log.info("{} could not purchase a ticket. Tickets sold out!", Thread.currentThread().getName());
+                break; // Exit loop when tickets are sold out
+            }
+            try {
+                Thread.sleep(500); // Simulate retrieval rate
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                log.error("Customer thread interrupted: {}", Thread.currentThread().getName(), e);
+                break;
+            }
+        }
     }
 }
