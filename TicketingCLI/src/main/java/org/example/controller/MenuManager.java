@@ -40,8 +40,7 @@ public class MenuManager {
                     case 5 -> simulationManager.stopSimulation(); // Stop a running simulation
                     case 6 -> removeConfiguration(); // Remove a configuration by ticket ID
                     case 7 -> updateConfiguration(); // Update a configuration by ticket ID
-                    case 8 -> searchConfiguration(); // Search for a configuration by ticket ID
-                    case 9 -> {
+                    case 8 -> {
                         // Exit message and exit the loop
                         System.out.println("Thank you for using the Ticket Management System. Goodbye!");
                         exit = true;
@@ -68,10 +67,9 @@ public class MenuManager {
         System.out.println(" 5. Stop Ticket Simulation                       ");
         System.out.println(" 6. Remove Ticket Configuration                  ");
         System.out.println(" 7. Update Ticket Configuration                  ");
-        System.out.println(" 8. Search Ticket Configuration                  ");
-        System.out.println(" 9. Exit from the System                         ");
+        System.out.println(" 8. Exit from the System                         ");
         System.out.println("---------------------------------------------------");
-        System.out.print(" Please select an option (1-9): ");
+        System.out.print(" Please select an option (1-8): ");
     }
 
     // Helper method to get and validate user input
@@ -100,12 +98,5 @@ public class MenuManager {
         System.out.print("Enter Ticket ID to update: ");
         int ticketId = getValidatedInput();  // Get ticket ID from user
         configurationHandler.updateConfiguration(ticketId); // Update the configuration
-    }
-
-    // Method to search for a configuration by its ticket ID
-    private void searchConfiguration() {
-        System.out.print("Enter Ticket ID to search: ");
-        int ticketId = getValidatedInput();  // Get ticket ID from user
-        configurationHandler.searchConfiguration(ticketId); // Search for the configuration
     }
 }

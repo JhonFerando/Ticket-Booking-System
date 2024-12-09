@@ -2,10 +2,10 @@ package org.example.model;
 
 import org.example.model.Configuration;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ConfigurationHandler {
     // Path to the JSON file where configurations are stored
@@ -45,15 +45,25 @@ public class ConfigurationHandler {
     // Method to display all configurations
     public void displayConfigurations() {
         if (configurations.isEmpty()) {
-            // If no configurations are available, notify the user
             System.out.println("No configurations available.\n");
         } else {
-            // Otherwise, display all available configurations
-            System.out.println("Available Configurations:");
-            configurations.forEach(System.out::println); // Print each configuration
-            System.out.println();
+            System.out.println("Available Event Configurations:\n");
+            configurations.forEach(config -> {
+                System.out.println("========================================");
+                System.out.println("Event Ticket ID: " + config.getEventTicketId());
+                System.out.println("Vendor Name: " + config.getVendorName());
+                System.out.println("Event Title: " + config.getTitle());
+                System.out.println("Max Ticket Capacity: " + config.getMaxTicketCapacity());
+                System.out.println("Total Tickets: " + config.getTotalTickets());
+                System.out.println("Ticket Release Rate: " + config.getTicketReleaseRate() + " tickets/interval");
+                System.out.println("Customer Retrieval Rate: " + config.getCustomerRetrievalRate() + " tickets/interval");
+                System.out.println("Ticket Release Interval: " + config.getTicketReleaseInterval() + " ms");
+                System.out.println("Customer Retrieval Interval: " + config.getCustomerRetrievalInterval() + " ms");
+                System.out.println("========================================\n");
+            });
         }
     }
+
 
     // Method to save the current list of configurations to the JSON file
     public void saveConfigurations() {
@@ -80,16 +90,15 @@ public class ConfigurationHandler {
     // Method to remove a configuration by its ticket ID
     public void removeConfiguration(int ticketId) {
         // Search for the configuration with the given ticket ID
-        Configuration toRemove = configurations.stream()
+        Optional<Configuration> toRemove = configurations.stream()
                 .filter(config -> config.getEventTicketId() == ticketId)
-                .findFirst()
-                .orElse(null); // Return null if not found
+                .findFirst(); // Return an Optional object to handle absence gracefully
 
-        if (toRemove != null) {
+        if (toRemove.isPresent()) {
             // If found, remove the configuration from the list and save the updated list
-            configurations.remove(toRemove);
+            configurations.remove(toRemove.get());
             saveConfigurations();
-            System.out.println("Configuration removed successfully.\n");
+            System.out.println("Configuration with Ticket ID " + ticketId + " has been removed.\n");
         } else {
             // If not found, notify the user
             System.out.println("Configuration with Ticket ID " + ticketId + " not found.\n");
@@ -99,38 +108,19 @@ public class ConfigurationHandler {
     // Method to update an existing configuration by its ticket ID
     public void updateConfiguration(int ticketId) {
         // Search for the configuration with the given ticket ID
-        Configuration toUpdate = configurations.stream()
+        Optional<Configuration> toUpdate = configurations.stream()
                 .filter(config -> config.getEventTicketId() == ticketId)
-                .findFirst()
-                .orElse(null); // Return null if not found
+                .findFirst(); // Return an Optional object to handle absence gracefully
 
-        if (toUpdate != null) {
+        if (toUpdate.isPresent()) {
             // If found, prompt the user for new input to update the configuration
             System.out.println("Updating configuration for Ticket ID: " + ticketId);
-            toUpdate.promptForInput();
+            toUpdate.get().promptForInput();  // Get new details from the user
             saveConfigurations(); // Save the updated configuration list
-            System.out.println("Configuration updated successfully.\n");
+            System.out.println("Configuration for Ticket ID " + ticketId + " has been updated.\n");
         } else {
             // If not found, notify the user
             System.out.println("Configuration with Ticket ID " + ticketId + " not found.\n");
-        }
-    }
-
-    // Method to search for a configuration by its ticket ID
-    public void searchConfiguration(int ticketId) {
-        // Search for the configuration with the given ticket ID
-        Configuration foundConfig = configurations.stream()
-                .filter(config -> config.getEventTicketId() == ticketId)
-                .findFirst()
-                .orElse(null); // Return null if not found
-
-        if (foundConfig != null) {
-            // If found, display the configuration
-            System.out.println("Configuration found:");
-            System.out.println(foundConfig);
-        } else {
-            // If not found, notify the user
-            System.out.println("No configuration found with Ticket ID " + ticketId + ".\n");
         }
     }
 

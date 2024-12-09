@@ -1,0 +1,12 @@
+Dec 09, 2024 9:24:00 PM org.example.model.TicketPool <init>
+INFO: TicketPool created for event: music concert with vendor: sam
+Dec 09, 2024 9:24:00 PM org.example.model.TicketPool addTickets
+INFO: Released 20 tickets for event: music concert, Vendor: sam
+Dec 09, 2024 9:24:00 PM org.example.model.TicketPool addTickets
+INFO: Ticket release summary for event 'music concert': Vendor: sam, Tickets Added: 20, Pool Size: 20/100
+Dec 09, 2024 9:24:00 PM org.example.model.TicketPool removeTickets
+INFO: Customer 1 purchased 20 tickets for event: music concert.
+Dec 09, 2024 9:24:00 PM org.example.model.TicketPool removeTickets
+INFO: Ticket purchase summary for customer 1: Tickets Bought: 20, Event Title: music concert, Pool Size: 0/100
+Dec 09, 2024 9:24:02 PM org.example.model.TicketPool interruptSimulation
+WARNING: Simulation interrupted.
