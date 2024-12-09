@@ -1,0 +1,1 @@
+[{"eventTicketId":1,"vendorName":"vendor 1","title":"sport","maxTicketCapacity":100,"ticketReleaseRate":2,"ticketReleaseInterval":2000,"customerRetrievalRate":2,"customerRetrievalInterval":2000,"totalTickets":100}]
