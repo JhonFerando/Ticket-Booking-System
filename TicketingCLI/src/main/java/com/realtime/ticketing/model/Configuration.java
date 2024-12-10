@@ -1,4 +1,4 @@
-package org.example.model;
+package com.realtime.ticketing.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

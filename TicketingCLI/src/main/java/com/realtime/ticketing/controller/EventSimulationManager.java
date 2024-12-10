@@ -1,14 +1,14 @@
-package org.example.controller;
+package com.realtime.ticketing.controller;
 
-import org.example.model.Configuration;
-import org.example.model.Customer;
-import org.example.model.TicketPool;
-import org.example.model.Vendor;
+import com.realtime.ticketing.model.Configuration;
+import com.realtime.ticketing.model.Customer;
+import com.realtime.ticketing.model.TicketPool;
+import com.realtime.ticketing.model.Vendor;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class SimulationManager {
+public class EventSimulationManager {
     // Indicates whether the simulation is active
     private volatile boolean simulationActive = false;
 

@@ -1,20 +1,20 @@
-package org.example.controller;
+package com.realtime.ticketing.controller;
 
-import org.example.model.ConfigurationHandler;
+import com.realtime.ticketing.model.ConfigurationManager;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MenuManager {
     // Instances of ConfigurationHandler and SimulationManager to handle configurations and simulations
-    private final ConfigurationHandler configurationHandler;
-    private final SimulationManager simulationManager;
+    private final ConfigurationManager configurationManager;
+    private final EventSimulationManager eventSimulationManager;
     private final Scanner scanner;
 
     // Constructor initializes the handler instances and scanner for user input
     public MenuManager() {
-        configurationHandler = new ConfigurationHandler();
-        simulationManager = new SimulationManager();
+        configurationManager = new ConfigurationManager();
+        eventSimulationManager = new EventSimulationManager();
         scanner = new Scanner(System.in);
     }
 
@@ -33,11 +33,11 @@ public class MenuManager {
 
                 // Process the selected option using a switch case
                 switch (option) {
-                    case 1 -> configurationHandler.addConfiguration();   // Add a new configuration
-                    case 2 -> configurationHandler.loadConfigurations(); // Load saved configurations
-                    case 3 -> configurationHandler.displayConfigurations(); // Display all configurations
-                    case 4 -> simulationManager.startSimulation(configurationHandler.getConfigurations(), scanner); // Start a simulation
-                    case 5 -> simulationManager.stopSimulation(); // Stop a running simulation
+                    case 1 -> configurationManager.addConfiguration();   // Add a new configuration
+                    case 2 -> configurationManager.loadConfigurations(); // Load saved configurations
+                    case 3 -> configurationManager.displayConfigurations(); // Display all configurations
+                    case 4 -> eventSimulationManager.startSimulation(configurationManager.getConfigurations(), scanner); // Start a simulation
+                    case 5 -> eventSimulationManager.stopSimulation(); // Stop a running simulation
                     case 6 -> removeConfiguration(); // Remove a configuration by ticket ID
                     case 7 -> updateConfiguration(); // Update a configuration by ticket ID
                     case 8 -> {
@@ -90,13 +90,13 @@ public class MenuManager {
     private void removeConfiguration() {
         System.out.print("Enter Ticket ID to remove: ");
         int ticketId = getValidatedInput();  // Get ticket ID from user
-        configurationHandler.removeConfiguration(ticketId); // Remove the configuration
+        configurationManager.removeConfiguration(ticketId); // Remove the configuration
     }
 
     // Method to update a configuration by its ticket ID
     private void updateConfiguration() {
         System.out.print("Enter Ticket ID to update: ");
         int ticketId = getValidatedInput();  // Get ticket ID from user
-        configurationHandler.updateConfiguration(ticketId); // Update the configuration
+        configurationManager.updateConfiguration(ticketId); // Update the configuration
     }
 }
