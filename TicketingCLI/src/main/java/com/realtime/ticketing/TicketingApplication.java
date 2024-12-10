@@ -1,8 +1,8 @@
-package org.example;
+package com.realtime.ticketing;
 
-import org.example.controller.MenuManager;
+import com.realtime.ticketing.controller.MenuManager;
 
-public class Main {
+public class TicketingApplication {
 
     // Main method of the ticketing application
     public static void main(String[] args) {
