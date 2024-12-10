@@ -6,6 +6,16 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.*;
 
+/**
+ * Represents a configuration for an event ticketing system. This class stores details
+ * about the event such as ticket title, vendor name, ticket release rate, customer
+ * retrieval rate, and various time intervals. It also provides methods to validate inputs,
+ * save configurations to a JSON file, and load configurations from a JSON file.
+ *
+ * <p>Each configuration has a unique event ticket ID generated sequentially.</p>
+ *
+ * @author Dharshan
+ */
 public class Configuration implements Serializable {
     // Static variable to generate unique eventTicketId for each configuration
     private static int ticketIdCounter = 1;
@@ -19,7 +29,10 @@ public class Configuration implements Serializable {
     private int customerRetrievalInterval; // Time interval for customer retrieval in milliseconds
     private int totalTickets; // Total number of tickets for the event
 
-    // Constructor that initializes the eventTicketId
+    /**
+     * Constructor that initializes the eventTicketId. The eventTicketId is auto-incremented
+     * with each new instance of Configuration.
+     */
     public Configuration() {
         this.eventTicketId = ticketIdCounter++; // Increment ticketIdCounter for each new Configuration
     }
@@ -28,7 +41,11 @@ public class Configuration implements Serializable {
     private static final String RED_TEXT = "\033[31m"; // Red text
     private static final String RESET_TEXT = "\033[0m"; // Reset text color
 
-    // Method for prompting the user to enter configuration details with validation
+    /**
+     * Prompts the user to input configuration details for the event, including ticket title, vendor name,
+     * total tickets, maximum ticket capacity, release rate, retrieval rate, and time intervals for ticket
+     * release and customer retrieval. Input is validated to ensure correctness.
+     */
     public void promptForInput() {
         Scanner scanner = new Scanner(System.in);
 
@@ -71,7 +88,14 @@ public class Configuration implements Serializable {
         this.customerRetrievalInterval = validateIntegerInput(scanner, "Customer Retrieval Interval", 1, Integer.MAX_VALUE);
     }
 
-    // Method to validate string inputs for title and vendor name
+    /**
+     * Validates the string input to ensure it contains only alphabetic characters and spaces.
+     * If the input is invalid, it prompts the user to re-enter the value.
+     *
+     * @param scanner The scanner object used to read user input.
+     * @param fieldName The name of the field being validated (e.g., "Ticket Title").
+     * @return The valid string input.
+     */
     private String validateStringInput(Scanner scanner, String fieldName) {
         while (true) {
             String input = scanner.nextLine().trim();
@@ -85,7 +109,16 @@ public class Configuration implements Serializable {
         }
     }
 
-    // Method to validate integer inputs within a specified range
+    /**
+     * Validates the integer input to ensure it is within a specified range.
+     * If the input is invalid, it prompts the user to re-enter the value.
+     *
+     * @param scanner The scanner object used to read user input.
+     * @param fieldName The name of the field being validated (e.g., "Total Tickets").
+     * @param minValue The minimum valid value for the input.
+     * @param maxValue The maximum valid value for the input.
+     * @return The valid integer input.
+     */
     private int validateIntegerInput(Scanner scanner, String fieldName, int minValue, int maxValue) {
         while (true) {
             try {
@@ -103,49 +136,103 @@ public class Configuration implements Serializable {
         }
     }
 
-    // Getters for the Configuration fields
+    /**
+     * Gets the event ticket ID associated with this configuration.
+     *
+     * @return The event ticket ID.
+     */
     public int getEventTicketId() {
         return eventTicketId;
     }
 
+    /**
+     * Gets the vendor name associated with this configuration.
+     *
+     * @return The vendor name for this event.
+     */
     public String getVendorName() {
         return vendorName;
     }
 
+    /**
+     * Gets the event title associated with this configuration.
+     *
+     * @return The event title.
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Gets the maximum ticket capacity for this event configuration.
+     *
+     * @return The maximum ticket capacity.
+     */
     public int getMaxTicketCapacity() {
         return maxTicketCapacity;
     }
 
+    /**
+     * Gets the ticket release rate for this configuration.
+     *
+     * @return The ticket release rate (tickets per second).
+     */
     public int getTicketReleaseRate() {
         return ticketReleaseRate;
     }
 
+    /**
+     * Gets the customer retrieval rate for this configuration.
+     *
+     * @return The customer retrieval rate (customers per second).
+     */
     public int getCustomerRetrievalRate() {
         return customerRetrievalRate;
     }
 
+    /**
+     * Gets the ticket release interval (in milliseconds) for this configuration.
+     *
+     * @return The ticket release interval in milliseconds.
+     */
     public int getTicketReleaseInterval() {
         return ticketReleaseInterval; // Getter for the ticket release interval
     }
 
+    /**
+     * Gets the customer retrieval interval (in milliseconds) for this configuration.
+     *
+     * @return The customer retrieval interval in milliseconds.
+     */
     public int getCustomerRetrievalInterval() {
         return customerRetrievalInterval; // Getter for the customer retrieval interval
     }
 
+    /**
+     * Gets the total number of tickets for this event configuration.
+     *
+     * @return The total number of tickets.
+     */
     public int getTotalTickets() {
         return totalTickets;
     }
 
-    // Method to return a formatted version of the event ticket ID (e.g., TICKET-00001)
+    /**
+     * Returns a formatted version of the event ticket ID (e.g., TICKET-00001).
+     *
+     * @return The formatted ticket ID.
+     */
     public String getFormattedTicketId() {
         return String.format("TICKET-%05d", eventTicketId);
     }
 
-    // Method to return a string representation of the Configuration object
+    /**
+     * Returns a string representation of this configuration, including details about
+     * the event ticket such as the title, ticket ID, vendor name, total tickets,
+     * and other configuration parameters.
+     *
+     * @return A string representation of the configuration.
+     */
     @Override
     public String toString() {
         return "========== Event Configuration ==========\n" +
@@ -161,7 +248,14 @@ public class Configuration implements Serializable {
                 "=========================================";
     }
 
-    // Save the list of configurations to a JSON file
+    /**
+     * Saves a list of configurations to a specified JSON file. This method serializes
+     * the configurations into JSON format and writes them to the provided file path.
+     *
+     * @param filename The name of the file to save the configurations to.
+     * @param configurations The list of Configuration objects to be saved.
+     * @throws IOException If an I/O error occurs while writing to the file.
+     */
     public static void saveToJsonFile(String filename, List<Configuration> configurations) throws IOException {
         Gson gson = new Gson();
         try (Writer writer = new FileWriter(filename)) {
@@ -170,7 +264,15 @@ public class Configuration implements Serializable {
         }
     }
 
-    // Method to load configurations from a JSON file
+    /**
+     * Loads a list of configurations from a specified JSON file. This method deserializes
+     * the JSON data from the file into a list of Configuration objects and updates the
+     * ticket ID counter based on the maximum event ticket ID found in the loaded configurations.
+     *
+     * @param filePath The path to the JSON file containing the configurations.
+     * @return A list of Configuration objects loaded from the JSON file.
+     * @throws IOException If an I/O error occurs while reading the file.
+     */
     public static List<Configuration> loadConfigurationsFromJson(String filePath) throws IOException {
         Gson gson = new Gson();
         List<Configuration> ticketConfigs;

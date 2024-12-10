@@ -5,6 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Manages the configurations for the ticketing system. This class handles loading, adding,
+ * displaying, saving, removing, and updating event configurations. It interacts with the
+ * configuration file (in JSON format) and provides methods to maintain and modify the configurations.
+ *
+ * <p>The ConfigurationManager ensures that configurations are properly loaded from and saved to a file,
+ * and it handles directory creation if necessary.</p>
+ *
+ * @author Dharshan
+ */
 public class ConfigurationManager {
     // Path to the JSON file where configurations are stored
     private static final String CONFIG_FILE_PATH = "config/ticket-configurations.json";
@@ -12,13 +22,20 @@ public class ConfigurationManager {
     // List to store all loaded configurations
     private final List<Configuration> configurations;
 
-    // Constructor initializes the list and loads existing configurations from the file
+    /**
+     * Constructor initializes the list of configurations and loads existing configurations
+     * from the configuration file. It ensures that the configurations are available as soon
+     * as the ConfigurationManager instance is created.
+     */
     public ConfigurationManager() {
         configurations = new ArrayList<>();
         loadConfigurations(); // Load configurations when an instance is created
     }
 
-    // Method to add a new configuration
+    /**
+     * Adds a new configuration by prompting the user for input and adding the new configuration
+     * to the list of configurations. The updated list is then saved to the configuration file.
+     */
     public void addConfiguration() {
         // Create a new Configuration object and prompt the user for input
         Configuration config = new Configuration();
@@ -27,7 +44,10 @@ public class ConfigurationManager {
         saveConfigurations(); // Save the updated list to the file
     }
 
-    // Method to load configurations from the JSON file
+    /**
+     * Loads configurations from the JSON file. This method deserializes the JSON data and adds
+     * the configurations to the list. If an error occurs, it prints an error message.
+     */
     public void loadConfigurations() {
         try {
             // Try to load the configurations from the file
@@ -40,7 +60,11 @@ public class ConfigurationManager {
         }
     }
 
-    // Method to display all configurations
+    /**
+     * Displays all available configurations. It prints the details of each configuration, including
+     * ticket ID, vendor name, event title, and other relevant information. If no configurations are
+     * available, it prints a message indicating that there are no configurations.
+     */
     public void displayConfigurations() {
         if (configurations.isEmpty()) {
             System.out.println("No configurations available.\n");
@@ -62,8 +86,11 @@ public class ConfigurationManager {
         }
     }
 
-
-    // Method to save the current list of configurations to the JSON file
+    /**
+     * Saves the current list of configurations to the JSON file. It serializes the configurations
+     * into JSON format and writes them to the specified file path. If an error occurs while saving,
+     * it prints an error message.
+     */
     public void saveConfigurations() {
         ensureDirectoryExists(); // Ensure that the config directory exists
         try {
@@ -76,7 +103,10 @@ public class ConfigurationManager {
         }
     }
 
-    // Helper method to ensure the "config" directory exists
+    /**
+     * Ensures that the "config" directory exists. If it does not exist, it creates the directory.
+     * This method is called before saving configurations to ensure the directory is available.
+     */
     private void ensureDirectoryExists() {
         File configDirectory = new File("config");
         if (!configDirectory.exists() && configDirectory.mkdirs()) {
@@ -85,7 +115,13 @@ public class ConfigurationManager {
         }
     }
 
-    // Method to remove a configuration by its ticket ID
+    /**
+     * Removes a configuration from the list based on the provided ticket ID. If a configuration
+     * with the specified ticket ID is found, it is removed, and the updated list is saved to the file.
+     * If no matching configuration is found, a message is printed indicating that no such configuration exists.
+     *
+     * @param ticketId The ticket ID of the configuration to be removed.
+     */
     public void removeConfiguration(int ticketId) {
         // Search for the configuration with the given ticket ID
         Optional<Configuration> toRemove = configurations.stream()
@@ -103,7 +139,13 @@ public class ConfigurationManager {
         }
     }
 
-    // Method to update an existing configuration by its ticket ID
+    /**
+     * Updates an existing configuration by its ticket ID. If a configuration with the specified
+     * ticket ID is found, the user is prompted to input new details, and the configuration is updated.
+     * The updated configuration list is then saved to the file.
+     *
+     * @param ticketId The ticket ID of the configuration to be updated.
+     */
     public void updateConfiguration(int ticketId) {
         // Search for the configuration with the given ticket ID
         Optional<Configuration> toUpdate = configurations.stream()
@@ -122,7 +164,11 @@ public class ConfigurationManager {
         }
     }
 
-    // Getter method to return the list of configurations
+    /**
+     * Getter method to return the list of all configurations.
+     *
+     * @return The list of all event configurations.
+     */
     public List<Configuration> getConfigurations() {
         return configurations; // Return the list of configurations
     }

@@ -3,10 +3,29 @@ package com.realtime.ticketing.util;
 import java.io.IOException;
 import java.util.logging.*;
 
-// Utility class to configure and return a logger with both file and console handlers.
+/**
+ * Utility class to configure and return a logger with both file and console handlers.
+ * This class ensures that logs are captured both in a file and on the console.
+ * It provides a simple logging setup for different components in the application.
+ *
+ * <p>The logger is configured to log all levels of messages to both the console and a log file,
+ * 'application.log'.</p>
+ *
+ * @author Dharshan
+ */
 public class LoggerUtil {
 
-    // This method initializes a logger with both file and console handlers.
+    /**
+     * Initializes a logger with both file and console handlers.
+     *
+     * <p>This method sets up two handlers for logging: one that writes logs to a file and
+     * another that outputs logs to the console. Both handlers use a simple text format
+     * for the logs.</p>
+     *
+     * @param clazz The class for which the logger is being created. The logger's name will
+     *              be the fully qualified name of this class.
+     * @return A configured Logger instance for the specified class.
+     */
     public static Logger getLogger(Class<?> clazz) {
         // Create a logger instance for the specified class
         Logger logger = Logger.getLogger(clazz.getName());

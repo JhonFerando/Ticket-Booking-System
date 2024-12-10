@@ -5,20 +5,36 @@ import com.realtime.ticketing.model.ConfigurationManager;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The MenuManager class provides a user interface for interacting with the ticketing system.
+ * It allows users to manage ticket configurations, start and stop simulations, and update or remove configurations.
+ * It uses a console-based menu and interacts with ConfigurationManager and EventSimulationManager classes.
+ *
+ * The class runs in a loop until the user chooses to exit the system.
+ *
+ * @author Dharshan
+ */
 public class MenuManager {
     // Instances of ConfigurationHandler and SimulationManager to handle configurations and simulations
     private final ConfigurationManager configurationManager;
     private final EventSimulationManager eventSimulationManager;
     private final Scanner scanner;
 
-    // Constructor initializes the handler instances and scanner for user input
+    /**
+     * Constructor initializes the handler instances and scanner for user input.
+     * It creates new instances of ConfigurationManager, EventSimulationManager, and Scanner.
+     */
     public MenuManager() {
         configurationManager = new ConfigurationManager();
         eventSimulationManager = new EventSimulationManager();
         scanner = new Scanner(System.in);
     }
 
-    // Main method to run the menu and interact with the user
+    /**
+     * Main method that runs the menu and interacts with the user.
+     * It displays the menu, accepts user input, and processes the selected option.
+     * The loop continues until the user chooses to exit.
+     */
     public void run() {
         boolean exit = false;
 
@@ -55,7 +71,10 @@ public class MenuManager {
         }
     }
 
-    // Method to display the main menu with available options
+    /**
+     * Displays the main menu with available options for the user to select.
+     * Provides options for adding, removing, and updating configurations, as well as starting and stopping the simulation.
+     */
     private void showMainMenu() {
         System.out.println("\n---------------------------------------------------");
         System.out.println("               Ticket Management System            ");
@@ -72,7 +91,12 @@ public class MenuManager {
         System.out.print(" Please select an option (1-8): ");
     }
 
-    // Helper method to get and validate user input
+    /**
+     * Helper method to get and validate user input for selecting menu options.
+     * If the input is invalid (e.g., non-integer), it catches the exception and prompts the user again.
+     *
+     * @return The validated integer input.
+     */
     private int getValidatedInput() {
         try {
             int input = scanner.nextInt();  // Read user input as an integer
@@ -86,14 +110,20 @@ public class MenuManager {
         }
     }
 
-    // Method to remove a configuration by its ticket ID
+    /**
+     * Prompts the user to enter a Ticket ID and removes the corresponding configuration.
+     * It calls the removeConfiguration method of the ConfigurationManager to remove the selected configuration.
+     */
     private void removeConfiguration() {
         System.out.print("Enter Ticket ID to remove: ");
         int ticketId = getValidatedInput();  // Get ticket ID from user
         configurationManager.removeConfiguration(ticketId); // Remove the configuration
     }
 
-    // Method to update a configuration by its ticket ID
+    /**
+     * Prompts the user to enter a Ticket ID and updates the corresponding configuration.
+     * It calls the updateConfiguration method of the ConfigurationManager to update the selected configuration.
+     */
     private void updateConfiguration() {
         System.out.print("Enter Ticket ID to update: ");
         int ticketId = getValidatedInput();  // Get ticket ID from user

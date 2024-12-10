@@ -7,7 +7,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
 
-// The TicketPool class manages the pool of tickets for an event, including adding, removing, and tracking ticket sales and customer interactions.
+/**
+ * The TicketPool class manages the pool of tickets for an event. It handles adding and removing tickets,
+ * and tracks ticket sales and customer interactions in a thread-safe manner.
+ *
+ * <p>This class is used in a simulation where tickets are released by a vendor and purchased by customers.
+ * It ensures that tickets are added and removed from the pool in a synchronized fashion, preventing race conditions.</p>
+ *
+ * <p>The TicketPool also manages the simulation state, including completion status and ticket purchase logging.</p>
+ *
+ * @author Dharshan
+ */
 public class TicketPool {
     // Logger instance for logging events related to the ticket pool
     private static final Logger logger = LoggerUtil.getLogger(TicketPool.class);
@@ -28,7 +38,18 @@ public class TicketPool {
     private int ticketsSold = 0;
     private int customers = 0;
 
-    // Constructor to initialize the ticket pool with event and capacity details
+    /**
+     * Constructor to initialize the ticket pool with event and capacity details.
+     *
+     * @param vendor The name of the vendor releasing tickets.
+     * @param maxTicketCapacity The maximum capacity of the ticket pool.
+     * @param totalTickets The total number of tickets available for the event.
+     * @param ticketReleaseRate The rate at which tickets are released.
+     * @param customerRetrievalRate The rate at which customers retrieve tickets.
+     * @param title The title of the event.
+     *
+     * @throws IllegalArgumentException if any capacity, ticket, or rate values are less than or equal to 0.
+     */
     public TicketPool(String vendor, int maxTicketCapacity, int totalTickets, int ticketReleaseRate, int customerRetrievalRate, String title) {
         if (maxTicketCapacity <= 0 || totalTickets <= 0 || ticketReleaseRate <= 0 || customerRetrievalRate <= 0) {
             throw new IllegalArgumentException("All capacity, ticket, and rate values must be greater than 0.");
@@ -48,7 +69,11 @@ public class TicketPool {
         logger.info("TicketPool created for event: " + title + " with vendor: " + vendor);
     }
 
-    // Adds tickets to the pool, ensuring that the pool does not exceed its capacity or the available tickets
+    /**
+     * Adds tickets to the pool. Ensures that the pool does not exceed its capacity or the available tickets.
+     *
+     * @param ticketCount The number of tickets to add to the pool.
+     */
     public void addTickets(int ticketCount) {
         synchronized (ticketPool) {
             if (simulationComplete) return;
@@ -80,7 +105,12 @@ public class TicketPool {
         }
     }
 
-    // Removes tickets from the pool (represents ticket purchase by a customer)
+    /**
+     * Removes tickets from the pool, simulating a customer purchasing tickets.
+     *
+     * @param retrievalRate The number of tickets to retrieve in this operation.
+     * @return true if tickets were successfully retrieved, false otherwise.
+     */
     public boolean removeTickets(int retrievalRate) {
         synchronized (ticketPool) {
             if (simulationComplete) return false;
@@ -111,26 +141,38 @@ public class TicketPool {
         }
     }
 
-    // Marks the simulation as complete (no more tickets can be sold)
+    /**
+     * Marks the simulation as complete, meaning no more tickets can be sold.
+     */
     public void stopSimulation() {
         simulationComplete = true;
         logger.info("Simulation completed. All tickets sold.");
     }
 
-    // Returns the current size of the ticket pool
+    /**
+     * Returns the current size of the ticket pool.
+     *
+     * @return the number of tickets currently in the pool.
+     */
     public int getTicketPoolSize() {
         synchronized (ticketPool) {
             return simulationComplete ? 0 : ticketPool.size(); // If the simulation is complete, return 0
         }
     }
 
-    // Interrupts the simulation externally (marks it as complete)
+    /**
+     * Interrupts the simulation externally and marks it as complete.
+     */
     public void interruptSimulation() {
         simulationComplete = true;
         logger.warning("Simulation interrupted.");
     }
 
-    // Checks if the simulation has completed (all tickets are sold or the simulation is stopped)
+    /**
+     * Checks if the simulation has completed (i.e., all tickets are sold or the simulation is stopped).
+     *
+     * @return true if the simulation is complete, false otherwise.
+     */
     public boolean isSimulationComplete() {
         return simulationComplete;
     }

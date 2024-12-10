@@ -8,7 +8,16 @@ import com.realtime.ticketing.model.Vendor;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The EventSimulationManager class is responsible for managing the simulation
+ * of an event ticketing system. It handles starting, stopping, and monitoring
+ * the simulation by managing the vendor and customer interactions with the ticket pool.
+ * The simulation involves multiple threads for vendors, customers, and monitoring ticket sales.
+ *
+ * @author Dharshan
+ */
 public class EventSimulationManager {
+
     // Indicates whether the simulation is active
     private volatile boolean simulationActive = false;
 
@@ -20,7 +29,13 @@ public class EventSimulationManager {
     private Thread customerThread = null;
     private Thread monitorThread = null;
 
-    // Method for starting the simulation
+    /**
+     * Starts the simulation based on the provided configurations and user input.
+     * Prompts the user to enter a ticket ID and initializes the simulation if valid configurations are available.
+     *
+     * @param configurations A list of configurations that can be used to start the simulation.
+     * @param scanner The scanner object to capture user input.
+     */
     public void startSimulation(List<Configuration> configurations, Scanner scanner) {
         // If no configurations are available, prompt the user to add or load configurations
         if (configurations.isEmpty()) {
@@ -55,7 +70,12 @@ public class EventSimulationManager {
         initializeSimulation(selectedConfig);
     }
 
-    // Method to initialize the simulation with the provided configuration
+    /**
+     * Initializes the simulation using the provided configuration.
+     * Sets up the ticket pool, starts the vendor and customer threads, and begins monitoring the ticket pool.
+     *
+     * @param config The configuration used to initialize the simulation.
+     */
     private void initializeSimulation(Configuration config) {
         // Initialize the ticket pool with the configuration details
         ticketPool = new TicketPool(
@@ -92,7 +112,10 @@ public class EventSimulationManager {
         monitorTicketPool();
     }
 
-    // Method to monitor the ticket pool and automatically stop the simulation when tickets run out
+    /**
+     * Monitors the ticket pool to check if all tickets are sold.
+     * If all tickets are sold, it automatically stops the simulation.
+     */
     private void monitorTicketPool() {
         monitorThread = new Thread(() -> {
             while (simulationActive) {
@@ -115,7 +138,10 @@ public class EventSimulationManager {
         monitorThread.start(); // Start the monitor thread
     }
 
-    // Method to stop the simulation
+    /**
+     * Stops the currently active simulation.
+     * Interrupts the vendor, customer, and monitor threads and ends the simulation.
+     */
     public void stopSimulation() {
         // If no simulation is active, inform the user
         if (!simulationActive) {
