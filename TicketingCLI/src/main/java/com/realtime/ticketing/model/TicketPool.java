@@ -1,11 +1,10 @@
-package org.example.model;
+package com.realtime.ticketing.model;
 
-import org.example.util.LoggerUtil;
+import com.realtime.ticketing.util.LoggerUtil;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 // The TicketPool class manages the pool of tickets for an event, including adding, removing, and tracking ticket sales and customer interactions.
