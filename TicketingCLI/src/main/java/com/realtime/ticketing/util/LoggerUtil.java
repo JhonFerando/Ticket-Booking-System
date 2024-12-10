@@ -1,4 +1,4 @@
-package org.example.util;
+package com.realtime.ticketing.util;
 
 import java.io.IOException;
 import java.util.logging.*;
