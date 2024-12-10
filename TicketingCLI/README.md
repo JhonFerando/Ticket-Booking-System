@@ -97,7 +97,7 @@ TicketingCLI/
    
 3. Run the Project
     ```bash
-    java -cp out org.example.Main
+    java -cp out com.realtime.ticketing.TicketingApplication
     ```
 
 ---
