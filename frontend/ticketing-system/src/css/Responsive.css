@@ -1,0 +1,22 @@
+@media (max-width: 768px) {
+    .header nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar nav a {
+        border-bottom: none;
+        border-top: 1px solid #0a9396;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 10px;
+    }
+}

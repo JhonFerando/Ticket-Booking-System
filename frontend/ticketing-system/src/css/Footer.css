@@ -1,0 +1,70 @@
+.footer {
+    background-color: #006d6d; /* Slightly different shade for freshness */
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px; /* Increase padding for a cleaner look */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding is included in width calculation */
+    margin: 0; /* Prevent margin overflow */
+    overflow: hidden; /* Prevents any overflow from content */
+}
+
+.footer p {
+    margin: 8px 0;
+}
+
+.footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer .footer-links a {
+    color: #a8dadc; /* Light teal color for links */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .footer-links a:hover {
+    color: #ffffff; /* On hover, links will turn white */
+    transform: translateY(-2px); /* Slight hover effect */
+}
+
+.footer .social-icons {
+    margin-top: 20px;
+}
+
+.footer .social-icons a {
+    color: #a8dadc;
+    font-size: 24px;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #ffffff;
+    transform: scale(1.1); /* Hover effect for icons */
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 15px;
+        font-size: 13px;
+    }
+
+    .footer .footer-links {
+        flex-direction: column;
+    }
+
+    .footer .social-icons a {
+        font-size: 20px;
+    }
+}

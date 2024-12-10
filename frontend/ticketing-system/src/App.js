@@ -1,37 +1,35 @@
-import React, { useState } from 'react';
-import ConfigurationForm from '../src/component/ConfigurationForm';
-import TicketDisplay from '../src/component/TicketDisplay';
-import ControlPanel from '../src/component/ControlPanel';
-import LogDisplay from '../src/component/LogDisplay';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import AddConfiguration from "./pages/AddConfiguration";
+import ViewAllTickets from "./pages/ViewAllTickets";
+import UpdateSingleTicket from "./pages/UpdateSingleTicket";
+import SignIn from "./pages/SignIn";
+import Register from "./pages/Register";
+import BuyTicket from "./pages/BuyTicket";
+import TicketLogs from "./pages/TicketLogs";
+import TicketReport from './pages/TicketReport';
 
-const App = () => {
-    const [systemRunning, setSystemRunning] = useState(false);
-
-    const startSystem = () => {
-        // Make an API call to start the system
-        setSystemRunning(true);
-    };
-
-    const stopSystem = () => {
-        // Make an API call to stop the system
-        setSystemRunning(false);
-    };
-
-    const handleConfigurationSubmit = (config) => {
-        // Send configuration to backend to initialize the system
-        console.log('System Configuration:', config);
-        // Call an API to set the config
-    };
-
+function App() {
     return (
         <div>
-            <h1>Real-Time Ticketing System</h1>
-            <ConfigurationForm onSubmit={handleConfigurationSubmit} />
-            <TicketDisplay />
-            <ControlPanel onStart={startSystem} onStop={stopSystem} />
-            {systemRunning && <LogDisplay />}
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/add-ticket" element={<AddConfiguration />} />
+                <Route path="/view-tickets" element={<ViewAllTickets />} />
+                <Route path="/avilable-tickets" element={<BuyTicket />} />
+                <Route path="/update-ticket/:id" element={<UpdateSingleTicket />} />
+                <Route path="/login" element={<SignIn />} />
+                <Route path="/signup" element={<Register />} />
+                <Route path="/logs" element={<TicketLogs />} />
+                <Route path="/report" element={<TicketReport />} />
+            </Routes>
+            <Footer/>
         </div>
     );
-};
+}
 
 export default App;
