@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.realtime.ticketing"},{"l":"com.realtime.ticketing.controller"},{"l":"com.realtime.ticketing.model"},{"l":"com.realtime.ticketing.util"}];updateSearchResults();
