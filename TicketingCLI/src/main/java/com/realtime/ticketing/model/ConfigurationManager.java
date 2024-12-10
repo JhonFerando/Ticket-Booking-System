@@ -1,13 +1,11 @@
-package org.example.model;
-
-import org.example.model.Configuration;
+package com.realtime.ticketing.model;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class ConfigurationHandler {
+public class ConfigurationManager {
     // Path to the JSON file where configurations are stored
     private static final String CONFIG_FILE_PATH = "config/ticket-configurations.json";
 
@@ -15,7 +13,7 @@ public class ConfigurationHandler {
     private final List<Configuration> configurations;
 
     // Constructor initializes the list and loads existing configurations from the file
-    public ConfigurationHandler() {
+    public ConfigurationManager() {
         configurations = new ArrayList<>();
         loadConfigurations(); // Load configurations when an instance is created
     }
