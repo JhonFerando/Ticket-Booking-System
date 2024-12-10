@@ -1,6 +1,6 @@
-package org.example.model;
+package com.realtime.ticketing.model;
 
-import org.example.util.LoggerUtil;
+import com.realtime.ticketing.util.LoggerUtil;
 
 import java.util.logging.Logger;
 
