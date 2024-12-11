@@ -1,17 +1,38 @@
-import React, { useState, useEffect } from 'react';
+/**
+ * @file RetrieveTicketPage.js
+ * @description This file defines the `RetrieveTicketPage` component that displays available event tickets
+ * and allows users to retrieve (purchase) them. The component fetches ticket data from a backend API,
+ * displays the tickets in a card layout, and handles user interactions for retrieving tickets.
+ *
+ * The page includes features such as:
+ * - Fetching ticket data from an API.
+ * - Displaying ticket information in a responsive grid layout.
+ * - Allowing users to click a "Purchase Ticket" button to retrieve tickets.
+ * - Displaying success or error messages using a Snackbar.
+ *
+ * @module RetrieveTicketPage
+ * @requires axios
+ * @requires @mui/material
+ * @requires @mui/system
+ * @requires react-router-dom
+ *
+ * @author Dharshan
+ */
+
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { Box, Typography, Card, CardContent, CardActions, Button, Snackbar, Grid } from '@mui/material';
-import { styled } from '@mui/system';
-import { useLocation } from "react-router-dom";
+import {Box, Typography, Card, CardContent, CardActions, Button, Snackbar, Grid} from '@mui/material';
+import {styled} from '@mui/system';
+import {useLocation} from "react-router-dom";
 
 // Styled components for modern UI
-const RootBox = styled(Box)(({ theme }) => ({
+const RootBox = styled(Box)(({theme}) => ({
     padding: '20px',
     backgroundColor: '#f9f9f9',
     minHeight: '100vh',
 }));
 
-const TitleTypography = styled(Typography)(({ theme }) => ({
+const TitleTypography = styled(Typography)(({theme}) => ({
     fontFamily: 'Roboto, sans-serif',
     fontWeight: '700',
     color: '#333',
@@ -21,7 +42,7 @@ const TitleTypography = styled(Typography)(({ theme }) => ({
     fontSize: '2rem',
 }));
 
-const CardContainer = styled(Grid)(({ theme }) => ({
+const CardContainer = styled(Grid)(({theme}) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
@@ -29,7 +50,7 @@ const CardContainer = styled(Grid)(({ theme }) => ({
     marginTop: theme.spacing(3),
 }));
 
-const CustomCard = styled(Card)(({ theme }) => ({
+const CustomCard = styled(Card)(({theme}) => ({
     width: 'calc(25% - 20px)',
     minWidth: '220px',
     borderRadius: '8px',
@@ -51,16 +72,16 @@ const CardImage = styled('img')({
     borderTopRightRadius: '8px',
 });
 
-const CardContentStyled = styled(CardContent)(({ theme }) => ({
+const CardContentStyled = styled(CardContent)(({theme}) => ({
     flexGrow: 1,
     paddingBottom: theme.spacing(3),
 }));
 
-const CardActionsStyled = styled(CardActions)(({ theme }) => ({
+const CardActionsStyled = styled(CardActions)(({theme}) => ({
     padding: theme.spacing(2),
 }));
 
-const PurchaseButton = styled(Button)(({ theme }) => ({
+const PurchaseButton = styled(Button)(({theme}) => ({
     backgroundColor: '#ff7043',
     color: '#fff',
     fontFamily: 'Arial, sans-serif',
@@ -71,16 +92,34 @@ const PurchaseButton = styled(Button)(({ theme }) => ({
     },
 }));
 
+/**
+ * The `RetrieveTicketPage` component fetches and displays available event tickets.
+ * It allows users to retrieve (purchase) tickets by clicking the "Purchase Ticket" button.
+ *
+ * @component
+ * @example
+ * return (
+ *   <RetrieveTicketPage />
+ * )
+ */
 const RetrieveTicketPage = () => {
     const [tickets, setTickets] = useState([]);
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+    // Get the userId from the query parameters
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const userId = queryParams.get("userId");
 
+    /**
+     * Fetches available tickets from the API when the component is mounted.
+     * On success, sets the tickets data in the state. On failure, displays an error message.
+     *
+     * @async
+     * @function
+     */
     useEffect(() => {
         const fetchTickets = async () => {
             try {
@@ -94,6 +133,14 @@ const RetrieveTicketPage = () => {
         fetchTickets();
     }, []);
 
+    /**
+     * Handles the retrieval (purchase) of a ticket. Sends the ticketId and userId to the backend
+     * to complete the purchase process. Displays a success or error message based on the result.
+     *
+     * @async
+     * @function
+     * @param {string} ticketId - The ID of the ticket to retrieve.
+     */
     const handleRetrieveTicket = async (ticketId) => {
         if (!userId) {
             setSnackbarMessage('Please log in to purchase tickets.');
@@ -171,8 +218,8 @@ const RetrieveTicketPage = () => {
                 autoHideDuration={4000}
                 onClose={() => setOpenSnackbar(false)}
                 message={snackbarMessage}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                sx={{ bottom: 50 }}
+                anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+                sx={{bottom: 50}}
             />
         </RootBox>
     );

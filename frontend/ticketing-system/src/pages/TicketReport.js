@@ -1,4 +1,23 @@
-import React, { useEffect, useState } from "react";
+/**
+ * @file TicketReport.js
+ * @description This file defines the `TicketReport` component, which is responsible for displaying a report of ticket data in a table format.
+ * The report includes information such as the vendor, title, price, description, and various ticket statistics.
+ * The component also provides a "Download PDF" button that allows the user to export the ticket data as a PDF document.
+ *
+ * The component fetches ticket data from the backend API and dynamically generates a table. It also features a styled letterhead section for presentation.
+ *
+ * @module TicketReport
+ * @requires react
+ * @requires axios
+ * @requires @mui/material
+ * @requires @mui/system
+ * @requires jsPDF
+ * @requires html2canvas
+ *
+ * @author Dharshan
+ */
+
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {
     Box,
@@ -12,20 +31,20 @@ import {
     TableRow,
     Paper,
 } from "@mui/material";
-import { styled } from "@mui/system";
+import {styled} from "@mui/system";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Sidebar from "../components/Sidebar";
 
-// Styled components
-const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
+// Styled components for the table and letterhead
+const StyledTableContainer = styled(TableContainer)(({theme}) => ({
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
     boxShadow: "none",
     border: "none",
 }));
 
-const StyledLetterhead = styled(Box)(({ theme }) => ({
+const StyledLetterhead = styled(Box)(({theme}) => ({
     textAlign: "center",
     marginBottom: theme.spacing(3),
     padding: theme.spacing(3),
@@ -45,7 +64,7 @@ const StyledLetterhead = styled(Box)(({ theme }) => ({
     },
 }));
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const StyledTableCell = styled(TableCell)(({theme}) => ({
     backgroundColor: "white",
     color: "black",
     border: "1px solid #DDD",
@@ -53,7 +72,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     textAlign: "center",
 }));
 
-const StyledTableHeadCell = styled(TableCell)(({ theme }) => ({
+const StyledTableHeadCell = styled(TableCell)(({theme}) => ({
     backgroundColor: "#036666",
     color: "white",
     border: "1px solid #DDD",
@@ -61,10 +80,26 @@ const StyledTableHeadCell = styled(TableCell)(({ theme }) => ({
     fontWeight: "600",
 }));
 
+/**
+ * The `TicketReport` component displays a detailed report of ticket data, including vendor information, ticket prices,
+ * and other related statistics. It also provides a "Download PDF" button that allows users to download the report as a PDF.
+ *
+ * The component fetches ticket data from the backend API and renders it in a styled table format. The letterhead section
+ * at the top of the page gives context to the report.
+ *
+ * @component
+ * @example
+ * return (
+ *   <TicketReport />
+ * )
+ */
 const TicketReport = () => {
     const [ticketData, setTicketData] = useState([]);
 
-    // Fetch ticket data from API
+    /**
+     * Fetches ticket data from the backend API and sets it to the state.
+     * This function is called when the component mounts to retrieve ticket information.
+     */
     useEffect(() => {
         const fetchTicketData = async () => {
             try {
@@ -77,13 +112,16 @@ const TicketReport = () => {
         fetchTicketData();
     }, []);
 
-    // Generate PDF function
+    /**
+     * Handles the PDF download functionality by converting the printable area to a canvas and saving it as a PDF.
+     * This function hides the "Download PDF" button during the generation of the PDF and restores it afterward.
+     */
     const handleDownloadPDF = () => {
         const input = document.querySelector(".printable-area");
         const buttons = document.querySelectorAll(".no-print-button");
         buttons.forEach((button) => (button.style.display = "none"));
 
-        html2canvas(input, { scale: 2 }).then((canvas) => {
+        html2canvas(input, {scale: 2}).then((canvas) => {
             const imgData = canvas.toDataURL("image/png");
             const pdf = new jsPDF("p", "mm", "a4");
             const imgWidth = 210;
@@ -98,7 +136,7 @@ const TicketReport = () => {
     return (
         <Box>
             <Box display="flex">
-                <Sidebar />
+                <Sidebar/>
                 <Box
                     flexDirection="column"
                     alignItems="center"

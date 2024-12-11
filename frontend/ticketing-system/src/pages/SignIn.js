@@ -1,6 +1,31 @@
-import React, { useState } from "react";
+/**
+ * @file SignIn.js
+ * @description This file defines the `SignIn` component which allows users to log in to the ticketing system.
+ * The component provides an input form for the user's email and password. Upon form submission, it validates the credentials
+ * and either redirects the user based on their role (admin or regular user) or displays an error message.
+ *
+ * The `SignIn` component also includes a registration link for users who do not have an account.
+ *
+ * @module SignIn
+ * @requires react
+ * @requires axios
+ *
+ * @author Dharshan
+ */
+
+import React, {useState} from "react";
 import axios from "axios";
 
+/**
+ * SignIn component that allows users to log in with their credentials.
+ * It includes error handling, success message, and navigation based on the role of the user (admin or regular).
+ *
+ * @component
+ * @example
+ * return (
+ *   <SignIn />
+ * )
+ */
 const SignIn = () => {
     const [formData, setFormData] = useState({
         email: "",
@@ -10,11 +35,22 @@ const SignIn = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    /**
+     * Handles form input changes and updates state with new values.
+     *
+     * @param {object} e - The change event from the form input.
+     */
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        const {name, value} = e.target;
+        setFormData((prev) => ({...prev, [name]: value}));
     };
 
+    /**
+     * Handles form submission by sending login credentials to the backend.
+     * On success, redirects based on the user's role (admin or regular user).
+     *
+     * @param {object} e - The submit event from the form.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -31,7 +67,7 @@ const SignIn = () => {
             );
 
             if (response.status === 200) {
-                const { userId, token, isAdmin } = response.data;
+                const {userId, token, isAdmin} = response.data;
 
                 localStorage.setItem("authToken", token);
 

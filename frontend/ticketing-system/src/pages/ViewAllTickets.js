@@ -1,12 +1,42 @@
-import React, { useEffect, useState } from "react";
+/**
+ * Custom pagination component for the ticket table.
+ *
+ * @param {Object} props - The props for the pagination component.
+ * @param {number} props.count - Total number of tickets.
+ * @param {number} props.page - The current page number.
+ * @param {number} props.rowsPerPage - The number of rows per page.
+ * @param {Function} props.onPageChange - Callback to handle page change.
+ * @returns {JSX.Element} Pagination component.
+ *
+ * @author Dharshan
+ */
+
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, MenuItem, Select, InputLabel, FormControl } from "@mui/material"; // Updated import for MUI v5
+import {
+    Box,
+    Typography,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    Button,
+    TablePagination,
+    TextField,
+    MenuItem,
+    Select,
+    InputLabel,
+    FormControl
+} from "@mui/material"; // Updated import for MUI v5
 import Sidebar from "../components/Sidebar";
-import { useNavigate } from "react-router-dom";
-import { makeStyles } from "@mui/styles";
+import {useNavigate} from "react-router-dom";
+import {makeStyles} from "@mui/styles";
 
-const CustomPagination = ({ count, page, rowsPerPage, onPageChange }) => {
+const CustomPagination = ({count, page, rowsPerPage, onPageChange}) => {
     return (
         <TablePagination
             component="div"
@@ -73,6 +103,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+/**
+ * The main component for viewing and managing tickets.
+ * Displays ticket data, allows for simulation control, search, and pagination.
+ *
+ * @returns {JSX.Element} ViewTickets component.
+ */
 const ViewTickets = () => {
     const classes = useStyles();
     const [ticketData, setTicketData] = useState([]);
@@ -83,15 +119,19 @@ const ViewTickets = () => {
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const navigate = useNavigate();
 
+    /**
+     * Fetches ticket data from the backend API.
+     */
     useEffect(() => {
         const fetchTicketData = async () => {
             try {
                 const response = await axios.get("http://localhost:5000/api/tickets");
                 setTicketData(response.data);
 
+                // Initialize button states for each ticket
                 const initialStates = {};
                 response.data.forEach((ticket) => {
-                    initialStates[ticket._id] = { start: false, stop: false };
+                    initialStates[ticket._id] = {start: false, stop: false};
                 });
                 setButtonStates(initialStates);
             } catch (error) {
@@ -102,10 +142,20 @@ const ViewTickets = () => {
         fetchTicketData();
     }, []);
 
+    /**
+     * Handles the update of a ticket by navigating to the update page.
+     *
+     * @param {string} ticketId - The ID of the ticket to be updated.
+     */
     const handleUpdate = (ticketId) => {
         navigate(`/update-ticket/${ticketId}`);
     };
 
+    /**
+     * Handles the deletion of a ticket from the system.
+     *
+     * @param {string} id - The ID of the ticket to be deleted.
+     */
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:5000/api/tickets/${id}`);
@@ -118,6 +168,11 @@ const ViewTickets = () => {
         }
     };
 
+    /**
+     * Starts the simulation for a ticket.
+     *
+     * @param {string} ticketId - The ID of the ticket to start simulation.
+     */
     const handleStartSimulation = async (ticketId) => {
         try {
             await axios.post(`http://localhost:5000/api/tickets/simulation/start`, {
@@ -128,7 +183,7 @@ const ViewTickets = () => {
 
             setButtonStates((prevStates) => ({
                 ...prevStates,
-                [ticketId]: { start: true, stop: false },
+                [ticketId]: {start: true, stop: false},
             }));
         } catch (error) {
             console.error("Error starting simulation", error);
@@ -136,6 +191,11 @@ const ViewTickets = () => {
         }
     };
 
+    /**
+     * Stops the simulation for a ticket.
+     *
+     * @param {string} ticketId - The ID of the ticket to stop simulation.
+     */
     const handleStopSimulation = async (ticketId) => {
         try {
             await axios.post(`http://localhost:5000/api/tickets/simulation/stop`, {
@@ -146,7 +206,7 @@ const ViewTickets = () => {
 
             setButtonStates((prevStates) => ({
                 ...prevStates,
-                [ticketId]: { start: false, stop: true },
+                [ticketId]: {start: false, stop: true},
             }));
         } catch (error) {
             console.error("Error stopping simulation", error);
@@ -154,24 +214,42 @@ const ViewTickets = () => {
         }
     };
 
+    /**
+     * Handles the change of the search query for ticket filtering.
+     *
+     * @param {Object} event - The change event from the search input.
+     */
     const handleSearchQueryChange = (event) => {
         setSearchQuery(event.target.value);
     };
 
+    /**
+     * Handles the change of the search criteria (field to search by).
+     *
+     * @param {Object} event - The change event from the select dropdown.
+     */
     const handleCriteriaChange = (event) => {
         setSearchCriteria(event.target.value);
     };
 
+    /**
+     * Handles the change of the current page in the ticket table pagination.
+     *
+     * @param {Object} event - The change event.
+     * @param {number} newPage - The new page number.
+     */
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
 
+    // Filter tickets based on the search query and criteria
     const filteredTickets = ticketData.filter((ticket) => {
         if (!searchQuery) return true;
         const field = ticket[searchCriteria]?.toString().toLowerCase();
         return field?.startsWith(searchQuery.toLowerCase());
     });
 
+    // Paginate filtered tickets
     const paginatedTickets = filteredTickets.slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage
@@ -179,9 +257,9 @@ const ViewTickets = () => {
 
     return (
         <Box display="flex">
-            <Sidebar />
+            <Sidebar/>
             <Box className={classes.contentContainer}>
-                <Typography variant="h4" gutterBottom align="center" style={{ color: "#036666", fontWeight: "bold" }}>
+                <Typography variant="h4" gutterBottom align="center" style={{color: "#036666", fontWeight: "bold"}}>
                     Tickets In the System
                 </Typography>
 
@@ -256,7 +334,7 @@ const ViewTickets = () => {
                                     </TableCell>
                                     <TableCell>
                                         <Button
-                                            style={{ backgroundColor: "#d4ac0d", color: "white" }}
+                                            style={{backgroundColor: "#d4ac0d", color: "white"}}
                                             onClick={() => handleUpdate(ticket._id)}
                                             className={classes.actionButton}
                                         >
@@ -265,7 +343,7 @@ const ViewTickets = () => {
                                     </TableCell>
                                     <TableCell>
                                         <Button
-                                            style={{ backgroundColor: "#e74c3c", color: "white" }}
+                                            style={{backgroundColor: "#e74c3c", color: "white"}}
                                             onClick={() => handleDelete(ticket._id)}
                                             className={classes.actionButton}
                                         >

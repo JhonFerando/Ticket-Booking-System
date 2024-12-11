@@ -1,6 +1,34 @@
-import React, { useState } from "react";
+/**
+ * @file Signup.js
+ * @description This file defines the `Signup` component which allows users to create a new account in the ticketing system.
+ * The component handles form submission, form validation, and communicates with the backend API to register a new user.
+ * It validates user input (including email format and matching passwords) and provides feedback on the form submission.
+ *
+ * The `Signup` component includes:
+ * - A form for user registration with fields for first name, last name, contact number, email, password, and confirm password.
+ * - Validation to ensure that the passwords match and that the email is valid.
+ * - Feedback messages to inform the user of successful signups or errors.
+ *
+ * @module Signup
+ * @requires react
+ * @requires axios
+ *
+ * @author Dharshan
+ */
+
+import React, {useState} from "react";
 import axios from "axios";
 
+/**
+ * The `Signup` component provides a registration form for new users to create an account.
+ * It manages form data, validates input, and submits the data to the backend API for user registration.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Signup />
+ * )
+ */
 const Signup = () => {
     const [formData, setFormData] = useState({
         firstName: "",
@@ -14,11 +42,21 @@ const Signup = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
 
+    /**
+     * Handles input field changes and updates the form data state.
+     *
+     * @param {Object} e - The event object from the input field.
+     */
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        const {name, value} = e.target;
+        setFormData((prev) => ({...prev, [name]: value}));
     };
 
+    /**
+     * Handles the form submission by validating the data and sending a POST request to register the user.
+     *
+     * @param {Object} e - The submit event object.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
 
