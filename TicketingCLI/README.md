@@ -41,39 +41,34 @@ The **Ticketing CLI Application** is a Java-based console application designed f
 
 ```plaintext
 TicketingCLI/
-├── config/
-│   ├── configuration.json      # Global application configurations
-│   └── ticket-configuration.json # Specific ticket-related configurations
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │       ├── org/
-│   │       │   ├── exampl/
-│   │       │       ├── controller/
-│   │       │       │   ├── MenuManager.java        # Manages menu interactions
-│   │       │       │   ├── SimulationManager.java  # Simulates event workflows
-│   │       │       ├── model/
-│   │       │       │   ├── Configuration.java      # Represents configuration data
-│   │       │       │   ├── ConfigurationHandler.java # Handles configuration file operations
-│   │       │       │   ├── Customer.java           # Model class for customers
-│   │       │       │   ├── Vendor.java             # Model class for vendors
-│   │       │       │   └── TicketPool.java         # Manages the pool of available tickets
-│   │       │       ├── util/
-│   │       │           └── LoggerUtil.java         # Utility class for logging
-│   │       └── Main.java                            # Entry point for the application
-│   └── test/
-│       ├── org/
-│       │   ├── exampl/
-│       │       ├── controller/
-│       │       │   ├── MenuManagerTest.java        # Unit tests for MenuManager
-│       │       │   ├── SimulationManagerTest.java  # Unit tests for SimulationManager
-│       │       ├── model/
-│       │       │   ├── ConfigurationHandlerTest.java # Unit tests for ConfigurationHandler
-│       │       │   └── TicketPoolTest.java         # Unit tests for TicketPool
-│       │       └── util/
-│       │           └── LoggerUtilTest.java         # Unit tests for LoggerUtil                              # Booking data for persistence
-├── README.md                                      # Project documentation
-└── LICENSE                                        # Project license
+├── config/                  # Configuration files
+│   ├── configuration.json
+│   └── ticket-configuration.json
+├── src/                     # Source code
+│   ├── main/java/com/realtime/ticketing/
+│   │   ├── controller/      # Controllers for CLI interactions
+│   │   │   ├── MenuManager.java
+│   │   │   └── SimulationManager.java
+│   │   ├── model/           # Data models
+│   │   │   ├── Configuration.java
+│   │   │   ├── ConfigurationHandler.java
+│   │   │   ├── Customer.java
+│   │   │   ├── Vendor.java
+│   │   │   └── TicketPool.java
+│   │   ├── util/            # Utilities
+│   │   │   └── LoggerUtil.java
+│   │   └── TicketingApplication.java        # Application entry point
+│   └── test/                # Unit tests
+│       ├── controller/
+│       │   ├── MenuManagerTest.java
+│       │   └── SimulationManagerTest.java
+│       ├── model/
+│       │   ├── ConfigurationHandlerTest.java
+│       │   └── TicketPoolTest.java
+│       └── util/
+│           └── LoggerUtilTest.java
+├── README.md                # CLI documentation
+└── LICENSE                  # License file
 ```
 ---
 
