@@ -30,6 +30,8 @@ const CreateTicket = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [status, setStatus] = useState('');
     const [errors, setErrors] = useState({});
+    const [releaseInterval, setReleaseInterval] = useState('');
+    const [retrievalInterval, setRetrievalInterval] = useState('');
 
     /**
      * Handles changes in the vendor input field.
@@ -141,6 +143,8 @@ const CreateTicket = () => {
         if (!customerRetrievalRate) newErrors.customerRetrievalRate = 'Customer retrieval rate is required.';
         if (!maxTicketCapacity) newErrors.maxTicketCapacity = 'Max ticket capacity is required.';
         if (!price) newErrors.price = 'Price is required.';
+        if (!releaseInterval) newErrors.releaseInterval = 'Release interval is required.';
+        if (!retrievalInterval) newErrors.retrievalInterval = 'Retrieval interval is required.';
         return newErrors;
     };
 
@@ -165,6 +169,8 @@ const CreateTicket = () => {
             customerRetrievalRate,
             maxTicketCapacity,
             price,
+            releaseInterval,
+            retrievalInterval,
             created_date: new Date(),
             imageUrl,
         };
@@ -180,6 +186,8 @@ const CreateTicket = () => {
             setCustomerRetrievalRate('');
             setMaxTicketCapacity('');
             setPrice('');
+            setReleaseInterval('');
+            setRetrievalInterval('');
             setImageUrl('');
             setErrors({});
         } catch (error) {
@@ -187,6 +195,8 @@ const CreateTicket = () => {
             swal('Error', 'Something went wrong. Please try again.', 'error');
         }
     };
+
+    const statusOptions = ['Open', 'In Progress', 'Closed'];
 
     /**
      * Handles numeric input validation for fields like total tickets, ticket release rate, etc.
@@ -198,6 +208,8 @@ const CreateTicket = () => {
      */
     const handleNumericChange = (setter, fieldName, min = 0, max = Infinity) => (event) => {
         const value = event.target.value;
+
+        // Allow only digits
         if (isNaN(value) || value.includes('.') || parseInt(value, 10) < min || parseInt(value, 10) > max) {
             setErrors((prevErrors) => ({
                 ...prevErrors,
@@ -207,7 +219,7 @@ const CreateTicket = () => {
         }
 
         setter(value);
-        setErrors((prevErrors) => ({...prevErrors, [fieldName]: ''}));
+        setErrors((prevErrors) => ({ ...prevErrors, [fieldName]: '' }));
     };
 
     /**

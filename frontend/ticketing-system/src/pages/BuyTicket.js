@@ -25,72 +25,74 @@ import {Box, Typography, Card, CardContent, CardActions, Button, Snackbar, Grid}
 import {styled} from '@mui/system';
 import {useLocation} from "react-router-dom";
 
-// Styled components for modern UI
-const RootBox = styled(Box)(({theme}) => ({
+const RootBox = styled(Box)(({ theme }) => ({
     padding: '20px',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#f0f2f5',
     minHeight: '100vh',
 }));
 
-const TitleTypography = styled(Typography)(({theme}) => ({
-    fontFamily: 'Roboto, sans-serif',
-    fontWeight: '700',
-    color: '#333',
+const TitleTypography = styled(Typography)(({ theme }) => ({
+    fontFamily: 'Poppins, sans-serif',
+    fontWeight: 'bold',
+    color: '#1a202c',
     textAlign: 'center',
     marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(2),
-    fontSize: '2rem',
+    marginBottom: theme.spacing(3),
+    fontSize: '2.5rem',
 }));
 
-const CardContainer = styled(Grid)(({theme}) => ({
+const CardContainer = styled(Grid)(({ theme }) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: theme.spacing(3),
+    gap: theme.spacing(4),
     marginTop: theme.spacing(3),
 }));
 
-const CustomCard = styled(Card)(({theme}) => ({
-    width: 'calc(25% - 20px)',
-    minWidth: '220px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    backgroundColor: '#fff',
+const CustomCard = styled(Card)(({ theme }) => ({
+    width: '280px',
+    borderRadius: '12px',
+    boxShadow: '0 8px 15px rgba(0, 0, 0, 0.2)',
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+    backgroundColor: '#ffffff',
     overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
     '&:hover': {
-        boxShadow: '0 6px 15px rgba(0, 0, 0, 0.15)',
+        transform: 'scale(1.05)',
+        boxShadow: '0 10px 20px rgba(0, 0, 0, 0.3)',
     },
 }));
 
 const CardImage = styled('img')({
     width: '100%',
-    height: '200px',
+    height: '180px',
     objectFit: 'cover',
-    borderTopLeftRadius: '8px',
-    borderTopRightRadius: '8px',
 });
 
-const CardContentStyled = styled(CardContent)(({theme}) => ({
+const CardContentStyled = styled(CardContent)(({ theme }) => ({
     flexGrow: 1,
-    paddingBottom: theme.spacing(3),
+    textAlign: 'center',
 }));
 
-const CardActionsStyled = styled(CardActions)(({theme}) => ({
+const CardActionsStyled = styled(CardActions)(({ theme }) => ({
     padding: theme.spacing(2),
+    justifyContent: 'center',
 }));
 
-const PurchaseButton = styled(Button)(({theme}) => ({
-    backgroundColor: '#ff7043',
-    color: '#fff',
-    fontFamily: 'Arial, sans-serif',
+const PurchaseButton = styled(Button)(({ theme }) => ({
+    backgroundImage: 'linear-gradient(45deg, #4caf50, #81c784)',
+    color: '#ffffff',
     fontWeight: 'bold',
     width: '100%',
     '&:hover': {
-        backgroundColor: '#f4511e',
+        backgroundImage: 'linear-gradient(45deg, #388e3c, #66bb6a)',
     },
 }));
+
+const SnackbarIcon = styled('div')({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+});
 
 /**
  * The `RetrieveTicketPage` component fetches and displays available event tickets.
@@ -126,11 +128,44 @@ const RetrieveTicketPage = () => {
                 const response = await axios.get('http://localhost:5000/api/tickets');
                 setTickets(response.data);
             } catch (error) {
+                console.error('Error fetching tickets:', error);
                 setSnackbarMessage('Failed to fetch tickets. Please try again later.');
                 setOpenSnackbar(true);
             }
         };
         fetchTickets();
+    }, []);
+
+    useEffect(() => {
+        const fetchRemainingTickets = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/tickets/remaining');
+
+                const remainingData = response.data?.tickets || [];
+                console.log(remainingData);
+                setTickets((prevTickets) =>
+                    prevTickets.map((ticket) => {
+                        const match = remainingData.find((data) => data.ticketId === ticket._id);
+                        return match
+                            ? {
+                                ...ticket,
+                                remainingTickets: match.ticketsRemaining,
+                                simulationComplete: match.simulationComplete,
+                            }
+                            : { ...ticket, remainingTickets: ticket.totalTickets };
+                    })
+                );
+            } catch (error) {
+                console.error('Error fetching remaining tickets:', error);
+                setSnackbarMessage('Failed to fetch remaining tickets.');
+                setOpenSnackbar(true);
+            }
+        };
+
+        // Poll every 5 seconds
+        const intervalId = setInterval(fetchRemainingTickets, 1000);
+
+        return () => clearInterval(intervalId); // Cleanup on unmount
     }, []);
 
     /**
@@ -156,10 +191,22 @@ const RetrieveTicketPage = () => {
                 userId,
             });
 
+            setTickets((prevTickets) =>
+                prevTickets.map((ticket) =>
+                    ticket._id === ticketId
+                        ? {
+                            ...ticket,
+                            remainingTickets: ticket.remainingTickets - 1,
+                        }
+                        : ticket
+                )
+            );
+
             setSnackbarMessage(response.data.message || 'Ticket retrieved successfully!');
             setOpenSnackbar(true);
         } catch (error) {
-            const errorMessage = error.response?.data?.error || 'An error occurred while retrieving the ticket.';
+            const errorMessage =
+                error.response?.data?.error || 'An error occurred while retrieving the ticket.';
             setSnackbarMessage(errorMessage);
             setOpenSnackbar(true);
         } finally {
@@ -198,11 +245,24 @@ const RetrieveTicketPage = () => {
                                 <Typography variant="h6" color="textSecondary">
                                     Rs {ticket.price}
                                 </Typography>
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        marginTop: '10px',
+                                        fontWeight: 'bold',
+                                        color: ticket.simulationComplete ? 'red' : 'green',
+                                    }}
+                                >
+                                    {ticket.simulationComplete
+                                        ? 'All Tickets Sold'
+                                        : `Remaining Tickets: ${ticket.remainingTickets}`}
+                                </Typography>
+
                             </CardContentStyled>
                             <CardActionsStyled>
                                 <PurchaseButton
                                     variant="contained"
-                                    disabled={isLoading}
+                                    disabled={isLoading || ticket.remainingTickets <= 0}
                                     onClick={() => handleRetrieveTicket(ticket._id)}
                                 >
                                     {isLoading ? 'Retrieving...' : 'Purchase Ticket'}
