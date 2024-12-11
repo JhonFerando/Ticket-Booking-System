@@ -16,7 +16,7 @@ import java.util.Optional;
  * @author Dharshan
  */
 public class ConfigurationManager {
-    // Path to the JSON file where configurations are stored
+    // Path to the JSON file where configurations are stored in the backend
     private static final String CONFIG_FILE_PATH = "D:\\personal\\real-time-booking-system\\Backend\\Configurations\\ticket-configurations.json";
 
     // List to store all loaded configurations
