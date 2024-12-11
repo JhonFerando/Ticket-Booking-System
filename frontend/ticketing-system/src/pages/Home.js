@@ -40,17 +40,12 @@ const HomePage = () => {
                     <Link to="/avilable-tickets" className="btn-primary">
                         Available Tickets
                     </Link>
+                    <p className="blue">Sign up now and take control of your ticketing process today!</p>
+                    <Link to="/signup" className="btn-primary">
+                        Sign Up
+                    </Link>
                 </div>
             </div>
-
-            {/* Call-to-Action Section */}
-            <section className="call-to-action">
-                <h2>Ready to Get Started?</h2>
-                <p>Sign up now and take control of your ticketing process today!</p>
-                <Link to="/signup" className="btn-primary">
-                    Sign Up
-                </Link>
-            </section>
         </div>
     );
 };

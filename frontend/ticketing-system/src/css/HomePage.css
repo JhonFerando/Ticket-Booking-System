@@ -8,7 +8,6 @@ body {
 }
 
 /* Hero Section */
-/* Hero Section */
 .hero {
     background-color: #1abc9c;
     color: white;
@@ -36,12 +35,11 @@ body {
     }
 }
 
-
 .hero h1 {
     font-size: 55px;
     margin: 0;
     font-weight: 900;
-    color: black;
+    color: white;
 }
 
 .hero p {
@@ -71,32 +69,23 @@ body {
     background-color: #e67e22;
 }
 
-/* Call-to-Action Section */
-.call-to-action {
-    background: #8eb4dd; /* Gradient background for visual appeal */
-    color: #ffffff;
-    text-align: center;
-    padding: 80px 20px;
-    box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .call-to-action h2 {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 20px;
     text-transform: uppercase; /* Adds emphasis to the heading */
     letter-spacing: 1.5px;
+    color: #f4f4f4;
 }
 
-.call-to-action p {
+.cta p {
     font-size: 18px;
     line-height: 1.6;
     max-width: 700px;
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
+    color: white;
 }
 
 .call-to-action .btn-primary {
@@ -118,6 +107,14 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero h1 {
+        font-size: 36px; /* Adjusted for smaller screens */
+    }
+
+    .hero p {
+        font-size: 16px; /* Adjusted for smaller screens */
+    }
+
     .call-to-action h2 {
         font-size: 28px; /* Scaled-down font for mobile */
     }
