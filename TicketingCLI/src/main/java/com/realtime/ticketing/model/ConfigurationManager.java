@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 public class ConfigurationManager {
     // Path to the JSON file where configurations are stored
-    private static final String CONFIG_FILE_PATH = "config/ticket-configurations.json";
+    private static final String CONFIG_FILE_PATH = "D:\\personal\\real-time-booking-system\\Backend\\Configurations\\ticket-configuration.json";
 
     // List to store all loaded configurations
     private final List<Configuration> configurations;
@@ -81,6 +81,7 @@ public class ConfigurationManager {
                 System.out.println("Customer Retrieval Rate: " + config.getCustomerRetrievalRate() + " tickets/interval");
                 System.out.println("Ticket Release Interval: " + config.getTicketReleaseInterval() + " ms");
                 System.out.println("Customer Retrieval Interval: " + config.getCustomerRetrievalInterval() + " ms");
+                System.out.println("Ticket Price: " + config.getPrice());
                 System.out.println("========================================\n");
             });
         }
@@ -92,7 +93,7 @@ public class ConfigurationManager {
      * it prints an error message.
      */
     public void saveConfigurations() {
-        ensureDirectoryExists(); // Ensure that the config directory exists
+//        ensureDirectoryExists(); // Ensure that the config directory exists
         try {
             // Save configurations to the JSON file
             Configuration.saveToJsonFile(CONFIG_FILE_PATH, configurations);

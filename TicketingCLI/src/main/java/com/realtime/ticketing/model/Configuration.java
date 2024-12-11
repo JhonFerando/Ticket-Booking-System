@@ -28,6 +28,7 @@ public class Configuration implements Serializable {
     private int ticketReleaseInterval; // Time interval for ticket release in milliseconds
     private int customerRetrievalInterval; // Time interval for customer retrieval in milliseconds
     private int totalTickets; // Total number of tickets for the event
+    private double price;
 
     /**
      * Constructor that initializes the eventTicketId. The eventTicketId is auto-incremented
@@ -86,6 +87,9 @@ public class Configuration implements Serializable {
 
         System.out.print("Enter Customer Retrieval Interval (in milliseconds): ");
         this.customerRetrievalInterval = validateIntegerInput(scanner, "Customer Retrieval Interval", 1, Integer.MAX_VALUE);
+
+        System.out.print("Enter Price: ");
+        double price = validateDoubleInput(scanner, "Price", 1.00, 10000.00);
     }
 
     /**
@@ -135,6 +139,39 @@ public class Configuration implements Serializable {
             System.out.print("Re-enter " + fieldName + ": ");
         }
     }
+
+    /**
+     * Validates user input to ensure it's a valid double within a specified range.
+     *
+     * @param scanner   The Scanner object for input.
+     * @param fieldName The name of the field for error messages.
+     * @param minValue  The minimum valid value for the input.
+     * @param maxValue  The maximum valid value for the input.
+     * @return The validated double input.
+     */
+    public double validateDoubleInput(Scanner scanner, String fieldName, double minValue, double maxValue) {
+        while (true) {
+            try {
+                // Prompt the user for input
+                System.out.print("Enter " + fieldName + ": ");
+                double input = Double.parseDouble(scanner.nextLine().trim());
+
+                // Check if the input is within the valid range
+                if (input >= minValue && input <= maxValue) {
+                    return input; // Valid input, return it
+                } else {
+                    // If input is out of range, show an error message
+                    System.out.println(RED_TEXT + "Error: " + fieldName + " must be between " + minValue + " and " + maxValue + "." + RESET_TEXT);
+                }
+            } catch (NumberFormatException e) {
+                // If input is not a valid double, show an error message
+                System.out.println(RED_TEXT + "Error: " + fieldName + " must be a valid decimal number." + RESET_TEXT);
+            }
+            // Prompt the user to re-enter the input if the validation failed
+            System.out.print("Re-enter " + fieldName + ": ");
+        }
+    }
+
 
     /**
      * Gets the event ticket ID associated with this configuration.
@@ -222,8 +259,13 @@ public class Configuration implements Serializable {
      *
      * @return The formatted ticket ID.
      */
-    public String getFormattedTicketId() {
-        return String.format("TICKET-%05d", eventTicketId);
+    public String getTicketId() {
+        return String.valueOf(eventTicketId);  // Return the ticket ID as a string
+    }
+
+
+    public double getPrice() {
+        return price;
     }
 
     /**
@@ -237,7 +279,7 @@ public class Configuration implements Serializable {
     public String toString() {
         return "========== Event Configuration ==========\n" +
                 "Event Title           : " + title + "\n" +
-                "Ticket ID             : " + getFormattedTicketId() + "\n" +
+                "Ticket ID             : " + getTicketId() + "\n" +
                 "Vendor Name           : " + vendorName + "\n" +
                 "Total Tickets         : " + totalTickets + "\n" +
                 "Max Ticket Capacity   : " + maxTicketCapacity + "\n" +

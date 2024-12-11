@@ -25,9 +25,9 @@ public class EventSimulationManager {
     private TicketPool ticketPool = null;
 
     // Threads for vendor, customer, and monitor operations
-    private Thread vendorThread = null;
-    private Thread customerThread = null;
-    private Thread monitorThread = null;
+//    private Thread vendorThread = null;
+//    private Thread customerThread = null;
+//    private Thread monitorThread = null;
 
     /**
      * Starts the simulation based on the provided configurations and user input.
@@ -99,8 +99,8 @@ public class EventSimulationManager {
         simulationActive = true;
 
         // Initialize and start the vendor and customer threads
-        vendorThread = new Thread(new Vendor(ticketPool, config.getTicketReleaseRate(), config.getTicketReleaseInterval()));
-        customerThread = new Thread(new Customer(ticketPool, config.getCustomerRetrievalRate(), config.getCustomerRetrievalInterval()));
+        Thread vendorThread = new Thread(new Vendor(ticketPool, config.getTicketReleaseRate(), config.getTicketReleaseInterval()));
+        Thread customerThread = new Thread(new Customer(ticketPool, config.getCustomerRetrievalRate(), config.getCustomerRetrievalInterval()));
 
         vendorThread.start(); // Start vendor thread
         customerThread.start(); // Start customer thread
@@ -117,7 +117,7 @@ public class EventSimulationManager {
      * If all tickets are sold, it automatically stops the simulation.
      */
     private void monitorTicketPool() {
-        monitorThread = new Thread(() -> {
+        new Thread(() -> {
             while (simulationActive) {
                 try {
                     // Check ticket pool every 2 seconds
@@ -125,17 +125,16 @@ public class EventSimulationManager {
 
                     // If all tickets are sold out and the simulation is not marked as complete, stop the simulation
                     if (ticketPool != null && ticketPool.getTicketPoolSize() == 0 && !ticketPool.isSimulationComplete()) {
+                        ticketPool.stopSimulation();
+                        simulationActive = false;
                         System.out.println("All tickets sold out. Ending simulation automatically.\n");
-                        stopSimulation();
                     }
                 } catch (InterruptedException e) {
                     // Handle interrupted exception in the monitor thread
                     System.err.println("Monitor thread interrupted: " + e.getMessage());
                 }
             }
-        });
-
-        monitorThread.start(); // Start the monitor thread
+        }).start(); // Start the monitor thread
     }
 
     /**
@@ -151,19 +150,6 @@ public class EventSimulationManager {
 
         // Set simulation as inactive
         simulationActive = false;
-
-        // Interrupt vendor and customer threads if they are still running
-        if (vendorThread != null && vendorThread.isAlive()) {
-            vendorThread.interrupt();
-        }
-        if (customerThread != null && customerThread.isAlive()) {
-            customerThread.interrupt();
-        }
-
-        // Interrupt the monitor thread if it's running
-        if (monitorThread != null && monitorThread.isAlive()) {
-            monitorThread.interrupt();
-        }
 
         // Stop the ticket pool simulation if it's running
         if (ticketPool != null) {
