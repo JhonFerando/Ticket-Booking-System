@@ -1,0 +1,26 @@
+[
+  {
+    "eventTicketId": 1,
+    "vendor": "jhonsmith",
+    "title": "football",
+    "maxTicketCapacity": 500,
+    "ticketReleaseRate": 2,
+    "releaseInterval": 2000,
+    "customerRetrievalRate": 3,
+    "retrievalInterval": 3000,
+    "totalTickets": 600,
+    "price": 5000.0
+  },
+  {
+    "eventTicketId": 2,
+    "vendor": "jhon",
+    "title": "football",
+    "maxTicketCapacity": 1500,
+    "ticketReleaseRate": 2,
+    "releaseInterval": 2000,
+    "customerRetrievalRate": 3,
+    "retrievalInterval": 3000,
+    "totalTickets": 600,
+    "price": 3000.0
+  }
+]

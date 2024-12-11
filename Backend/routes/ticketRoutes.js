@@ -1,5 +1,5 @@
 const express = require("express");
-const {createTicket,getTickets,retrieveTickets,startSimulation,stopSimulation, getAllTicketLogs,getTicketById,updateTicket,deleteTicket} = require("../controllers/Ticket");
+const {createTicket,getTickets,startSimulation,stopSimulation, getAllTicketLogs,getTicketById,updateTicket,deleteTicket,getTicketsWithRemaining} = require("../controllers/Ticket");
 const router = express.Router();
 
 // Route to create a new ticket
@@ -7,14 +7,13 @@ router.post("/", createTicket);
 
 router.get("/logs", getAllTicketLogs);
 
+router.get('/remaining', getTicketsWithRemaining);
+
 // Route to get all tickets
 router.get("/", getTickets);
 
 // Route to get all tickets
 router.get("/:ticketId", getTicketById);
-
-// Route for asynchronous ticket retrieval (with queue handling)
-router.post("/retrieve", retrieveTickets);
 
 // Route to start ticket simulation
 router.post("/simulation/start", startSimulation);

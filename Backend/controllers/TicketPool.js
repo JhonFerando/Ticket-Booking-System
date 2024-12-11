@@ -2,7 +2,7 @@ const { EventEmitter } = require('events');
 const { Worker, isMainThread, parentPort } = require('worker_threads');
 
 class TicketPool extends EventEmitter {
-    constructor(vendor, maxTicketCapacity, totalTickets, ticketReleaseRate, customerRetrievalRate, title) {
+    constructor(vendor, maxTicketCapacity, totalTickets, ticketReleaseRate, customerRetrievalRate, title, releaseInterval, retrievalInterval) {
         super();
         this.vendor = vendor;
         this.maxTicketCapacity = maxTicketCapacity;
@@ -10,6 +10,8 @@ class TicketPool extends EventEmitter {
         this.ticketReleaseRate = ticketReleaseRate;
         this.customerRetrievalRate = customerRetrievalRate;
         this.title = title;
+        this.releaseInterval = releaseInterval;
+        this.retrievalInterval = retrievalInterval;
         this.ticketPool = [];
         this.active = true;
         this.customers = 0;
@@ -29,68 +31,101 @@ class TicketPool extends EventEmitter {
         this.startConsumerWorker();
     }
 
-    // Adds tickets to the pool by vendors
+    // Method to add tickets to the pool
     addTickets(ticketCount, vendor) {
         if (this.simulationComplete) return;
 
         const ticketsRemainingToBeReleased = this.totalTickets - this.ticketsSold - this.ticketPool.length;
+        const availableSpace = this.maxTicketCapacity - this.ticketPool.length;
 
-        if (ticketCount > ticketsRemainingToBeReleased) {
-            ticketCount = ticketsRemainingToBeReleased;
-        }
-
-        if (ticketCount > 0 && this.ticketPool.length + ticketCount <= this.maxTicketCapacity) {
-            for (let i = 0; i < ticketCount; i++) {
-                const ticketId = Math.floor(Math.random() * 1000);
-                this.ticketPool.push(ticketId);
+        // Check if there's enough space in the pool
+        if (availableSpace < ticketCount) {
+            if(ticketCount == ticketsRemainingToBeReleased){
+                console.log('Simulation Started');
+                return;
             }
-
-            console.log(`Vendor [${this.vendor}] added ${ticketCount} ${this.title} ticket(s).`);
-            console.log(`Ticket pool size: ${this.ticketPool.length}/${this.maxTicketCapacity}`);
-            console.log(`Tickets remaining to be released: ${ticketsRemainingToBeReleased - ticketCount}`);
-            this.emit('ticketAdded'); // Notify consumers
-        } else if (ticketsRemainingToBeReleased === 0) {
-            console.log("No tickets remaining to be released.");
-        } else {
-            console.log("Ticket pool is full. Cannot add more tickets.");
+            console.log("Not enough space in the pool to release more tickets.");
+            return;
         }
+
+        // Check if there are enough tickets remaining to be released
+        if (ticketsRemainingToBeReleased < ticketCount) {
+            console.log("There are not enough tickets remaining to be released.");
+            return;
+        }
+
+
+        for (let i = 0; i < ticketCount; i++) {
+            const ticketId = Math.floor(Math.random() * 1000); // Generate unique ticket ID
+            this.ticketPool.push(ticketId);
+        }
+
+        console.log(`Vendor [${this.vendor}] released ${ticketCount} ${this.title} ticket(s).`);
+        console.log(`Current pool size: ${this.ticketPool.length}/${this.maxTicketCapacity}.`);
+        console.log(`Tickets remaining to be released: ${ticketsRemainingToBeReleased - ticketCount}`);
     }
 
-    // Consumer purchases tickets at a specific rate
+    // Method for customers to purchase tickets
     purchaseTicket() {
         if (this.simulationComplete) return;
 
-        if (this.ticketPool.length > 0) {
-            const ticketId = this.ticketPool.shift();
-            this.customers++;
+        if (this.ticketPool.length === 0) {
+            console.log("The ticket pool is empty. No tickets available for purchase.");
+            return;
+        }
+
+        let ticketsRetrieved = 0;
+
+        while (this.ticketPool.length > 0 && ticketsRetrieved < this.customerRetrievalRate) {
+            this.ticketPool.shift(); // Retrieve one ticket
+            ticketsRetrieved++;
             this.ticketsSold++;
-            const ticketsRemainingToBeReleased = this.totalTickets - this.ticketsSold - this.ticketPool.length;
+        }
 
-            console.log(`Customer [${this.customers}] purchased ${this.title} ticket with ID ${ticketId}.  That ticket related to ${this.vendor}`);
-            console.log(`Tickets left in pool: ${this.ticketPool.length}`);
-            console.log(`Tickets remaining to be released to the pool: ${Math.max(0, ticketsRemainingToBeReleased)}`);
+        if (ticketsRetrieved > 0) {
+            this.customers++;
+            console.log(`Customer [${this.customers}] retrieved ${ticketsRetrieved} ${this.title} ticket(s).`);
+        }
 
-            if (this.ticketsSold === this.totalTickets) {
-                console.log("All tickets have been sold!");
-                this.stopSimulation();
-            }
-        } else {
-            console.log("No tickets available for purchase.");
+        console.log(`Current pool size: ${this.ticketPool.length}/${this.maxTicketCapacity}.`);
+
+        if (this.ticketPool.length === 0 && this.ticketsSold >= this.totalTickets) {
+            this.stopSimulation();
         }
     }
 
-
-    // Interrupt the simulation
-    interruptSimulation() {
-        this.simulationComplete = true;
-        console.log("The current simulation is interrupted.");
-    }
 
     // Stop the simulation
     stopSimulation() {
         this.simulationComplete = true;
-        console.log("Simulation stopped. All tickets have been released and purchased.");
+        console.log("Simulation completed. All tickets sold.");
     }
+
+    // External method to interrupt the simulation
+    interruptSimulation() {
+        this.simulationComplete = true;
+        console.log("Simulation has been interrupted.");
+    }
+
+    // Check if the simulation is complete
+    isSimulationComplete() {
+        return this.simulationComplete;
+    }
+
+    // Get current size of the ticket pool
+    getTicketPoolSize() {
+        return this.simulationComplete ? 0 : this.ticketPool.length;
+    }
+
+    // Method to calculate and return remaining tickets
+    getRemainingTickets() {
+        const ticketsRemaining = this.totalTickets - this.ticketsSold;
+        return {
+            ticketsRemaining,
+            simulationComplete: this.simulationComplete,
+        };
+    }
+
 
     // Producer: Simulates vendors adding tickets
     async startProducerWorker() {
@@ -110,6 +145,7 @@ class TicketPool extends EventEmitter {
         producerWorker.postMessage({
             action: 'startProducer',
             ticketReleaseRate: this.ticketReleaseRate,
+            releaseInterval: this.releaseInterval,
             vendor: this.vendor,
             totalTickets: this.totalTickets,
             ticketsSold: this.ticketsSold,
@@ -135,14 +171,10 @@ class TicketPool extends EventEmitter {
         consumerWorker.postMessage({
             action: 'startConsumer',
             customerRetrievalRate: this.customerRetrievalRate,
+            retrievalInterval: this.retrievalInterval,
             ticketPoolLength: this.ticketPool.length,
             ticketPool: this.ticketPool
         });
-    }
-
-    // Start the simulation
-    startSimulation() {
-        console.log("Simulation started.");
     }
 
     // Method to retrieve all console logs
@@ -158,8 +190,6 @@ if (!isMainThread) {
 
 function runWorkerLogic() {
     parentPort.on('message', (msg) => {
-        console.log("Received message in worker:", msg);
-
         if (msg.action === 'startProducer') {
             // Use ticketPoolLength to control ticket addition
             setInterval(() => {
@@ -170,7 +200,7 @@ function runWorkerLogic() {
                 }
 
                 const ticketsToAdd = Math.min(
-                    Math.floor(Math.random() * 10) + 1,
+                    Math.floor(msg.ticketReleaseRate),
                     msg.totalTickets - msg.ticketsSold - msg.ticketPoolLength
                 );
                 const vendorName = `Vendor ${Math.floor(Math.random() * msg.vendor) + 1}`;
@@ -179,7 +209,7 @@ function runWorkerLogic() {
                     ticketCount: ticketsToAdd,
                     vendor: vendorName
                 });
-            }, msg.ticketReleaseRate);
+            }, msg.releaseInterval);
         }
 
         if (msg.action === 'startConsumer') {
@@ -194,7 +224,7 @@ function runWorkerLogic() {
                         action: 'noTicketsAvailable'
                     });
                 }
-            }, msg.customerRetrievalRate);
+            }, msg.retrievalInterval);
         }
     });
 }

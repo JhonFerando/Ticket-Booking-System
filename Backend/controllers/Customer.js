@@ -17,7 +17,7 @@ const createCustomer = async (req, res) => {
         // Check if customer already exists by NIC or email
         const existingCustomer = await Customer.findOne({ email });
         if (existingCustomer) {
-            return res.status(400).json({ error: 'Customer with this NIC or email already exists' });
+            return res.status(400).json({ error: 'Customer with this email already exists' });
         }
 
         // Hash the password before saving

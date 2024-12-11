@@ -1,83 +1,22 @@
 const Ticket = require("../models/Ticket");
+const fs = require("fs/promises");
+const path = require("path");
 const TicketPool = require("./TicketPool");
 const amqp = require("amqplib");
 const express = require("express");
-
-// configuration of RabbitMQ
-const rabbitMQUrl = "amqp://localhost";
-
-// Create a queue for ticket-related tasks (Producer-Consumer Pattern)
-let channel, connection;
+const mongoose = require("mongoose");
 
 // Object to hold active simulations by ticketId
 const simulations = {};
 
-// Utility function to establish RabbitMQ connection
-const establishRabbitMQConnection = async () => {
-    try {
-        const conn = await amqp.connect(rabbitMQUrl);
-        const ch = await conn.createChannel();
-        await ch.assertQueue("ticket-retrieval-queue", { durable: true });
-        return { conn, ch };
-    } catch (error) {
-        throw new Error(`Failed to connect to RabbitMQ: ${error.message}`);
-    }
-};
-
-// Connect to RabbitMQ
-async function connectRabbitMQ() {
-    try {
-        ({ conn: connection, ch: channel } = await establishRabbitMQConnection());
-        console.log("Connected to RabbitMQ");
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-
-// Job processor function for ticket retrieval (Consumer)
-const processTicketRetrieval = async () => {
-    try {
-        channel.consume("ticket-retrieval-queue", async (msg) => {
-            const { ticketId, quantity } = JSON.parse(msg.content.toString());
-
-            console.log(`Processing ticket retrieval for ticketId: ${ticketId}, quantity: ${quantity}`);
-
-            try {
-                // Retrieve the ticket and check availability
-                const ticket = await Ticket.findById(ticketId);
-                if (!ticket) {
-                    throw new Error("Ticket not found");
-                }
-
-                // Ensure there are enough tickets available
-                if (ticket.totalTickets < quantity) {
-                    throw new Error("Not enough tickets available");
-                }
-
-                // Deduct tickets from the total available
-                ticket.totalTickets -= quantity;
-                await ticket.save();
-
-                console.log(`Successfully processed ticket retrieval for ${quantity} tickets.`);
-                channel.ack(msg); // Acknowledge the message
-            } catch (error) {
-                console.error("Error processing ticket retrieval:", error.message);
-                channel.nack(msg); // Negative acknowledgment in case of failure
-            }
-        }, { noAck: false });
-    } catch (error) {
-        console.error("Error in ticket processing:", error.message);
-    }
-};
-
 
 // Controller for creating a ticket (Producer)
 const createTicket = async (req, res) => {
-    const { vendor, title, description, totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity, price, imageUrl } = req.body;
+    const { vendor, title, description, totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity, price, imageUrl, releaseInterval, retrievalInterval  } = req.body;
 
     try {
         // Create a new ticket in the database (Producer's job)
-        const ticket = await Ticket.create({ vendor, title, description, totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity, price, imageUrl });
+        const ticket = await Ticket.create({ vendor, title, description, totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity, price, imageUrl, releaseInterval, retrievalInterval  });
 
         // Respond with the created ticket
         res.status(201).json(ticket);
@@ -87,91 +26,124 @@ const createTicket = async (req, res) => {
     }
 };
 
-
-// Controller for getting all tickets
 const getTickets = async (req, res) => {
     try {
-        const tickets = await Ticket.find();  // Fetch all tickets from the database
-        if (!tickets.length) {
-            return res.status(404).json({ error: "No tickets found" });
+        // Fetch tickets from the database
+        const ticketsFromDb = await Ticket.find();
+
+        // Fetch tickets from the JSON file
+        const filePath = path.join(__dirname, "../Configurations/ticket-configurations.json");
+        const fileData = await fs.readFile(filePath, "utf-8");
+        const ticketsFromFile = JSON.parse(fileData);
+
+        // Create a list of existing eventTicketIds from the database
+        const existingTicketVendors = ticketsFromDb.map(ticket => ticket.vendor);
+
+        // Filter tickets that are not already in the database
+        const newTickets = ticketsFromFile.filter(ticket => !existingTicketVendors.includes(ticket.vendor));
+
+        if (newTickets.length > 0) {
+            // Insert new tickets into the database
+            await Ticket.insertMany(newTickets);
         }
-        res.status(200).json(tickets);  // Respond with the tickets
+
+        // Fetch updated tickets from the database after insertion
+        const updatedTicketsFromDb = await Ticket.find();
+
+        // Respond with all tickets
+        res.status(200).json(updatedTicketsFromDb);
     } catch (error) {
-        res.status(500).json({ error: error.message });  // Handle any server errors
-    }
-};
-
-
-// Controller for ticket retrieval (Asynchronous Consumer processing through RabbitMQ)
-const retrieveTickets = async (req, res) => {
-    const { ticketId, quantity } = req.body;
-
-    // Validate input
-    if (!ticketId || !quantity || quantity <= 0) {
-        return res.status(400).json({ error: "Invalid input data. Ticket ID and quantity are required, and quantity must be greater than 0." });
-    }
-
-    try {
-        // Prepare job data to be sent to the RabbitMQ queue
-        const jobData = { ticketId, quantity };
-
-        // Send the job to the RabbitMQ queue for processing by the Consumer
-        channel.sendToQueue("ticket-retrieval-queue", Buffer.from(JSON.stringify(jobData)), {
-            persistent: true,  // Ensure the message is not lost if RabbitMQ crashes
-        });
-
-        return res.status(200).json({
-            success: true,
-            message: `Ticket retrieval job for ${quantity} tickets added to the queue for ticket ID ${ticketId}.`,
-        });
-    } catch (error) {
-        console.error("Error while adding job to queue:", error.message);  // Log detailed error message
-        return res.status(500).json({ error: "An error occurred while processing your request. Please try again later." });
+        console.error("Error in getTickets:", error.message);
+        res.status(500).json({ error: error.message });
     }
 };
 
 
 
 const startSimulation = async (req, res) => {
-    const { ticketId } = req.body;
+    let { ticketId } = req.body;
 
     if (!ticketId) {
         return res.status(400).json({ error: "Ticket ID is required" });
     }
 
     try {
-        // Find the ticket by ID
-        const ticket = await Ticket.findById(ticketId);
+        // Convert ticketId to a string for consistent handling
+        ticketId = ticketId.toString();
+
+        let ticket;
+
+        // Check if the ticketId is a valid ObjectId and try fetching from MongoDB
+        if (mongoose.Types.ObjectId.isValid(ticketId)) {
+            ticket = await Ticket.findById(ticketId);
+        }
+
+        // If not found, assume it might be a numeric or non-ObjectId string
         if (!ticket) {
+            ticket = await Ticket.findOne({ eventTicketId: ticketId });
+        }
+
+        // If still not found, try fetching from the JSON file
+        if (!ticket) {
+            const filePath = path.join(
+                __dirname,
+                "../Configurations/ticket-configurations.json"
+            );
+            const fileData = await fs.readFile(filePath, "utf-8");
+            const ticketsFromFile = JSON.parse(fileData);
+
+            // Search for the ticket in the JSON file
+            ticket = ticketsFromFile.find(
+                (t) => t._id === ticketId || t.eventTicketId === ticketId
+            );
+        }
+
+        // If no ticket is found in either source, return a 404
+        if (!ticket) {
+            console.error("Ticket not found for ID:", ticketId);
             return res.status(404).json({ error: "Ticket not found" });
+        }
+
+        console.log(`Simulation started for ticketId: ${ticketId}`);
+
+        // Fallback for vendor
+        const vendor = ticket.vendor || ticket.vendorName;
+
+        if (!vendor) {
+            console.error("Both vendor and vendorName are missing in the ticket:", ticket);
+            return res.status(400).json({ error: "Ticket must have either vendor or vendorName" });
         }
 
         // Create the ticket pool for the found ticket
         const ticketPool = new TicketPool(
-            ticket.vendor,
+            vendor, // Use fallback logic for vendor
             ticket.maxTicketCapacity,
             ticket.totalTickets,
             ticket.ticketReleaseRate,
             ticket.customerRetrievalRate,
-            ticket.title
+            ticket.title,
+            ticket.releaseInterval,
+            ticket.retrievalInterval
         );
 
         // Add the total number of tickets to the pool
         ticketPool.addTickets(ticket.totalTickets);
 
         // Save reference to the active simulation
-        simulations[ticket._id.toString()] = ticketPool;
-
-        console.log(`Simulation started for ticketId: ${ticket._id}`);
+        simulations[ticket._id?.toString() || ticket.eventTicketId] = ticketPool;
 
         // Respond to the client that the simulation has started
         res.status(200).json({
             success: true,
-            message: `Simulation started for ticketId: ${ticket._id}`,
+            message: `Simulation started for ticketId: ${
+                ticket._id || ticket.eventTicketId
+            }`,
         });
     } catch (error) {
-        console.error("Error starting simulation:", error.message); // Log the error for debugging
-        res.status(500).json({ error: "An error occurred while starting the simulation. Please try again later." });
+        console.error("Error starting simulation:", error.message);
+        res.status(500).json({
+            error: "An error occurred while starting the simulation. Please try again later.",
+        });
     }
 };
 
@@ -194,7 +166,7 @@ const stopSimulation = async (req, res) => {
             // Remove the simulation reference from the active simulations
             delete simulations[ticketId.toString()];
 
-            console.log(`Simulation for ticket ${ticketId} stopped.`); // Log the stop action
+            console.log(`Simulation for ticket ${ticketId} stopped.`);
             res.status(200).json({
                 success: true,
                 message: `Simulation for ticket ${ticketId} stopped successfully.`,
@@ -227,8 +199,8 @@ const getAllTicketLogs = async (req, res) => {
 
         for (const ticketId in simulations) {
             const ticketPool = simulations[ticketId];
-            const logs = ticketPool.getLogs(); // Retrieve logs from each simulation
-            allLogs = allLogs.concat(logs); // Combine all logs into a single array
+            const logs = ticketPool.getLogs();
+            allLogs = allLogs.concat(logs);
         }
 
         // Return the collected logs
@@ -267,14 +239,14 @@ const getTicketById = async (req, res) => {
 
 // Controller for updating a ticket by ticketId
 const updateTicket = async (req, res) => {
-    const { ticketId } = req.params;  // Extract ticketId from URL parameters
-    const updateData = req.body;      // Extract update data from request body
+    const { ticketId } = req.params;
+    const updateData = req.body;
 
     try {
         // Attempt to find and update the ticket by ticketId
         const ticket = await Ticket.findByIdAndUpdate(ticketId, updateData, {
-            new: true,        // Return the updated ticket
-            runValidators: true, // Run validation on the update
+            new: true,
+            runValidators: true,
         });
 
         // Handle case when ticket is not found
@@ -298,7 +270,7 @@ const updateTicket = async (req, res) => {
 
 // Controller for deleting a ticket by ticketId
 const deleteTicket = async (req, res) => {
-    const { ticketId } = req.params;  // Extract ticketId from URL parameters
+    const { ticketId } = req.params;
 
     try {
         // Attempt to find and delete the ticket by ticketId
@@ -320,18 +292,35 @@ const deleteTicket = async (req, res) => {
     }
 };
 
+const getTicketsWithRemaining = async (req, res) => {
+    try {
 
-// Initialize the RabbitMQ connection and start processing
-connectRabbitMQ().then(() => processTicketRetrieval());
+        const ticketsData = Object.entries(simulations).map(([ticketId, ticketPool]) => {
+            const { ticketsRemaining, simulationComplete } = ticketPool.getRemainingTickets();
+            return {
+                ticketId,
+                ticketsRemaining,
+                simulationComplete
+            };
+        });
+
+        res.status(200).json({ success: true, tickets: ticketsData });
+    } catch (error) {
+        console.error("Error retrieving tickets:", error.message); // Log detailed error
+        res.status(500).json({
+            error: "An error occurred while fetching the tickets. Please try again later.",
+        });
+    }
+};
 
 module.exports = {
     createTicket,
     getTickets,
-    retrieveTickets,
     startSimulation,
     stopSimulation,
     getAllTicketLogs,
     getTicketById,
     updateTicket,
-    deleteTicket
+    deleteTicket,
+    getTicketsWithRemaining,
 };
