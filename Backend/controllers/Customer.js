@@ -7,22 +7,14 @@ const createCustomer = async (req, res) => {
     const { firstName, lastName, contact, email, password, confirmPassword } = req.body;
 
     try {
-        console.log("Received data:", req.body);
-
-        // Check if password and confirmPassword match
-        if (password !== confirmPassword) {
-            return res.status(400).json({ error: 'Passwords do not match' });
-        }
-
         // Check if customer already exists by NIC or email
-        const existingCustomer = await Customer.findOne({ email });
+        const existingCustomer = await Customer.findOne({email});
         if (existingCustomer) {
-            return res.status(400).json({ error: 'Customer with this email already exists' });
+            return res.status(400).json({ error: 'Customer with this NIC or email already exists' });
         }
 
         // Hash the password before saving
-        const saltRounds = 10; // Salt rounds for bcrypt
-        const hashedPassword = await bcrypt.hash(password, saltRounds);  // Ensure both arguments are passed
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create new customer
         const newCustomer = new Customer({
@@ -38,7 +30,6 @@ const createCustomer = async (req, res) => {
         console.log('Customer details saved inside the database.');
         res.status(201).json({ message: 'Customer created successfully!' });
     } catch (error) {
-        console.error("Error creating customer:", error);
         res.status(500).json({ error: error.message });
     }
 };
@@ -74,21 +65,4 @@ const loginCustomer = async (req, res) => {
     }
 };
 
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1]; // Bearer token
-
-    if (!token) {
-        return res.status(401).json({ error: "Access token required" });
-    }
-
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403).json({ error: "Invalid token" });
-        }
-        req.user = user;
-        next();
-    });
-};
-
-module.exports = { createCustomer, loginCustomer, authenticateToken };
+module.exports = { createCustomer, loginCustomer };

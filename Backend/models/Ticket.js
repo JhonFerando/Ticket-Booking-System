@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const ticketSchema = new mongoose.Schema({
     vendor: {
         type: String,
-        required: true
     },
     title: {
         type: String,
@@ -29,14 +28,12 @@ const ticketSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
-        required: true,
-        min: 0
+        type: Number
     },
     imageUrl: {
         type: String,
         default: ''
-    }
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Ticket", ticketSchema);
