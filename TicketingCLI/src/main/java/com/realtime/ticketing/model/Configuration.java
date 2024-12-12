@@ -89,7 +89,7 @@ public class Configuration implements Serializable {
         this.customerRetrievalInterval = validateIntegerInput(scanner, "Customer Retrieval Interval", 1, Integer.MAX_VALUE);
 
         System.out.print("Enter Price: ");
-        double price = validateDoubleInput(scanner, "Price", 1.00, 10000.00);
+        double price = validateDoubleInput(scanner, "Price", 1.00, 50000.00);
     }
 
     /**

@@ -10,3 +10,1017 @@ Dec 09, 2024 9:24:00 PM model.com.realtime.ticketing.TicketPool removeTickets
 INFO: Ticket purchase summary for customer 1: Tickets Bought: 20, Event Title: music concert, Pool Size: 0/100
 Dec 09, 2024 9:24:02 PM model.com.realtime.ticketing.TicketPool interruptSimulation
 WARNING: Simulation interrupted.
+Dec 12, 2024 12:29:45 AM com.realtime.ticketing.model.TicketPool <init>
+INFO: TicketPool created for event: Boxing Match with vendor: Alex
+Dec 12, 2024 12:29:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Boxing Match, Vendor: Alex
+Dec 12, 2024 12:29:45 AM com.realtime.ticketing.model.TicketPool interruptSimulation
+WARNING: Simulation interrupted.
+Dec 12, 2024 12:29:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Boxing Match': Vendor: Alex, Tickets Added: 2, Pool Size: 2/1200
+Dec 12, 2024 9:20:47 AM com.realtime.ticketing.model.TicketPool <init>
+INFO: TicketPool created for event: Boxing Match with vendor: Alex
+Dec 12, 2024 9:20:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Boxing Match, Vendor: Alex
+Dec 12, 2024 9:20:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Boxing Match': Vendor: Alex, Tickets Added: 2, Pool Size: 2/1200
+Dec 12, 2024 9:20:47 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Customer 1 purchased 2 tickets for event: Boxing Match.
+Dec 12, 2024 9:20:47 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Ticket purchase summary for customer 1: Tickets Bought: 2, Event Title: Boxing Match, Pool Size: 0/1200
+Dec 12, 2024 9:20:49 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 9:29:42 AM com.realtime.ticketing.model.TicketPool <init>
+INFO: TicketPool created for event: Boxing Match with vendor: Alex
+Dec 12, 2024 9:29:42 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Boxing Match, Vendor: Alex
+Dec 12, 2024 9:29:42 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Boxing Match': Vendor: Alex, Tickets Added: 2, Pool Size: 2/1200
+Dec 12, 2024 9:29:42 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Customer 1 purchased 2 tickets for event: Boxing Match.
+Dec 12, 2024 9:29:42 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Ticket purchase summary for customer 1: Tickets Bought: 2, Event Title: Boxing Match, Pool Size: 0/1200
+Dec 12, 2024 9:29:44 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 9:34:07 AM com.realtime.ticketing.model.TicketPool <init>
+INFO: TicketPool created for event: Basketball with vendor: null
+Dec 12, 2024 9:35:46 AM com.realtime.ticketing.model.TicketPool interruptSimulation
+WARNING: Simulation interrupted.
+Dec 12, 2024 9:35:53 AM com.realtime.ticketing.model.TicketPool <init>
+INFO: TicketPool created for event: Badmiton with vendor: Ravindran
+Dec 12, 2024 9:35:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 9:35:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 9:35:53 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Customer 1 purchased 2 tickets for event: Badmiton.
+Dec 12, 2024 9:35:53 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Ticket purchase summary for customer 1: Tickets Bought: 2, Event Title: Badmiton, Pool Size: 0/500
+Dec 12, 2024 9:35:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 9:35:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 9:35:55 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Customer 2 purchased 2 tickets for event: Badmiton.
+Dec 12, 2024 9:35:55 AM com.realtime.ticketing.model.TicketPool removeTickets
+INFO: Ticket purchase summary for customer 2: Tickets Bought: 2, Event Title: Badmiton, Pool Size: 0/500
+Dec 12, 2024 9:35:57 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 9:35:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 9:35:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:04 AM com.realtime.ticketing.model.TicketPool <init>
+INFO: TicketPool created for event: Badmiton with vendor: Ravindran
+Dec 12, 2024 10:17:04 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:04 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:06 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:06 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:08 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:08 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:10 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:10 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:12 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:12 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:14 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:14 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:16 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:16 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:18 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:18 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:17:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Released 2 tickets for event: Badmiton, Vendor: Ravindran
+Dec 12, 2024 10:17:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Ticket release summary for event 'Badmiton': Vendor: Ravindran, Tickets Added: 2, Pool Size: 2/500
+Dec 12, 2024 10:22:12 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 500
+Dec 12, 2024 10:22:12 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:22:12 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:22:14 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 10:22:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1200
+Dec 12, 2024 10:22:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:22:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:22:51 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 10:29:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 500
+Dec 12, 2024 10:29:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:29:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:29:57 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 10:33:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 498
+Dec 12, 2024 10:33:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:33:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:33:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [1] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:33:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:33:41 AM com.realtime.ticketing.model.TicketPool stopSimulation
+INFO: Simulation completed. All tickets sold.
+Dec 12, 2024 10:35:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 498
+Dec 12, 2024 10:35:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:27 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [1] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:27 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 496
+Dec 12, 2024 10:35:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:29 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [2] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:29 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:31 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+WARNING: The ticket pool is empty, but tickets are still available for release.
+Dec 12, 2024 10:35:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 494
+Dec 12, 2024 10:35:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:33 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [3] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:33 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 492
+Dec 12, 2024 10:35:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 490
+Dec 12, 2024 10:35:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 4/500.
+Dec 12, 2024 10:35:35 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [4] retrieved 3 Badmiton ticket(s).
+Dec 12, 2024 10:35:35 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 1/500.
+Dec 12, 2024 10:35:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 488
+Dec 12, 2024 10:35:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 3/500.
+Dec 12, 2024 10:35:37 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [5] retrieved 3 Badmiton ticket(s).
+Dec 12, 2024 10:35:37 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 486
+Dec 12, 2024 10:35:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [6] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 484
+Dec 12, 2024 10:35:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:41 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [7] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:41 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 482
+Dec 12, 2024 10:35:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:43 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [8] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:43 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 480
+Dec 12, 2024 10:35:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:45 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [9] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:45 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 478
+Dec 12, 2024 10:35:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:47 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [10] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:47 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 476
+Dec 12, 2024 10:35:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:49 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [11] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:49 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 474
+Dec 12, 2024 10:35:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:51 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [12] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:51 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 472
+Dec 12, 2024 10:35:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:53 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [13] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:53 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 470
+Dec 12, 2024 10:35:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:55 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [14] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:55 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 468
+Dec 12, 2024 10:35:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:57 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [15] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:57 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:35:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 466
+Dec 12, 2024 10:35:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:35:59 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [16] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:35:59 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 464
+Dec 12, 2024 10:36:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:01 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [17] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:01 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 462
+Dec 12, 2024 10:36:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:03 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [18] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:03 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 460
+Dec 12, 2024 10:36:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:05 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [19] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:05 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 458
+Dec 12, 2024 10:36:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:07 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [20] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:07 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 456
+Dec 12, 2024 10:36:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:09 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [21] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:09 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 454
+Dec 12, 2024 10:36:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:11 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [22] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:11 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 452
+Dec 12, 2024 10:36:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:13 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [23] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:13 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:15 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 450
+Dec 12, 2024 10:36:15 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:15 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:15 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [24] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:15 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:17 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 448
+Dec 12, 2024 10:36:17 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:17 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:17 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [25] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:17 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:19 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 446
+Dec 12, 2024 10:36:19 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:19 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:19 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [26] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:19 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 444
+Dec 12, 2024 10:36:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:21 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [27] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:21 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 442
+Dec 12, 2024 10:36:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:23 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [28] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:23 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 440
+Dec 12, 2024 10:36:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:25 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [29] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:25 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 438
+Dec 12, 2024 10:36:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:27 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [30] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:27 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 436
+Dec 12, 2024 10:36:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:29 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [31] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:29 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 434
+Dec 12, 2024 10:36:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:31 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [32] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:31 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 432
+Dec 12, 2024 10:36:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:33 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [33] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:33 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 430
+Dec 12, 2024 10:36:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:35 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [34] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:35 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 428
+Dec 12, 2024 10:36:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:37 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [35] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:37 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 426
+Dec 12, 2024 10:36:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [36] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 424
+Dec 12, 2024 10:36:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:41 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [37] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:41 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 422
+Dec 12, 2024 10:36:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:43 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [38] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:43 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 420
+Dec 12, 2024 10:36:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:45 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [39] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:45 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 418
+Dec 12, 2024 10:36:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:47 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [40] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:47 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 416
+Dec 12, 2024 10:36:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:49 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [41] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:49 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 414
+Dec 12, 2024 10:36:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:51 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [42] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:51 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 412
+Dec 12, 2024 10:36:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:53 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [43] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:53 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 410
+Dec 12, 2024 10:36:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:55 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [44] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:55 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 408
+Dec 12, 2024 10:36:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:57 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [45] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:57 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:36:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 406
+Dec 12, 2024 10:36:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:36:59 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [46] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:36:59 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 404
+Dec 12, 2024 10:37:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:01 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [47] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:01 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 402
+Dec 12, 2024 10:37:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:03 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [48] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:03 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 400
+Dec 12, 2024 10:37:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:05 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [49] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:05 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 398
+Dec 12, 2024 10:37:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:07 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [50] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:07 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 396
+Dec 12, 2024 10:37:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:09 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [51] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:09 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 394
+Dec 12, 2024 10:37:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:11 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [52] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:11 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 392
+Dec 12, 2024 10:37:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:13 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [53] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:13 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:15 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 390
+Dec 12, 2024 10:37:15 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:15 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:15 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [54] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:15 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:17 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 388
+Dec 12, 2024 10:37:17 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:17 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:17 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [55] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:17 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:19 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 386
+Dec 12, 2024 10:37:19 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:19 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:19 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [56] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:19 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 384
+Dec 12, 2024 10:37:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:21 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:21 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [57] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:21 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 382
+Dec 12, 2024 10:37:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:23 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:23 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [58] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:23 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 380
+Dec 12, 2024 10:37:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:25 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:25 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [59] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:25 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 378
+Dec 12, 2024 10:37:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:27 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:27 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [60] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:27 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 376
+Dec 12, 2024 10:37:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:29 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:29 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [61] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:29 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 374
+Dec 12, 2024 10:37:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:31 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:31 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [62] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:31 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 372
+Dec 12, 2024 10:37:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:33 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:33 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [63] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:33 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 370
+Dec 12, 2024 10:37:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:35 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:35 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [64] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:35 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 368
+Dec 12, 2024 10:37:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:37 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:37 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [65] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:37 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 366
+Dec 12, 2024 10:37:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:39 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [66] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:39 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 364
+Dec 12, 2024 10:37:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:41 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:41 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [67] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:41 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:37:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 362
+Dec 12, 2024 10:37:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Ravindran] released 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:43 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/500.
+Dec 12, 2024 10:37:43 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [68] retrieved 2 Badmiton ticket(s).
+Dec 12, 2024 10:37:43 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/500.
+Dec 12, 2024 10:42:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1198
+Dec 12, 2024 10:42:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:45 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:42:45 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [1] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:45 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:42:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1196
+Dec 12, 2024 10:42:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:47 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:42:47 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [2] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:47 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:42:49 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+WARNING: The ticket pool is empty, but tickets are still available for release.
+Dec 12, 2024 10:42:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1194
+Dec 12, 2024 10:42:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:49 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:42:51 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [3] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:51 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:42:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1192
+Dec 12, 2024 10:42:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:51 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:42:53 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [4] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:53 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:42:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1190
+Dec 12, 2024 10:42:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:53 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:42:55 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [5] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:55 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:42:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1188
+Dec 12, 2024 10:42:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:55 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:42:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1186
+Dec 12, 2024 10:42:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:57 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 4/1200.
+Dec 12, 2024 10:42:57 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [6] retrieved 3 Boxing Match ticket(s).
+Dec 12, 2024 10:42:57 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 1/1200.
+Dec 12, 2024 10:42:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1184
+Dec 12, 2024 10:42:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:42:59 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 3/1200.
+Dec 12, 2024 10:42:59 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [7] retrieved 3 Boxing Match ticket(s).
+Dec 12, 2024 10:42:59 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1182
+Dec 12, 2024 10:43:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:01 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:01 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [8] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:01 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1180
+Dec 12, 2024 10:43:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:03 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:03 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [9] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:03 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1178
+Dec 12, 2024 10:43:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:05 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:05 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [10] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:05 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1176
+Dec 12, 2024 10:43:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:07 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:07 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [11] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:07 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1174
+Dec 12, 2024 10:43:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:09 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:09 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [12] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:09 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1172
+Dec 12, 2024 10:43:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:11 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:11 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [13] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:11 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.
+Dec 12, 2024 10:43:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Tickets remaining to be released: 1170
+Dec 12, 2024 10:43:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Vendor [Alex] released 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:13 AM com.realtime.ticketing.model.TicketPool addTickets
+INFO: Current pool size: 2/1200.
+Dec 12, 2024 10:43:13 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Customer [14] retrieved 2 Boxing Match ticket(s).
+Dec 12, 2024 10:43:13 AM com.realtime.ticketing.model.TicketPool purchaseTicket
+INFO: Current pool size: 0/1200.

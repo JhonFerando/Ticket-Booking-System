@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class Customer implements Runnable {
     // Logger instance for logging customer actions and events
-    private static final Logger logger = LoggerUtil.getLogger(Customer.class);
+    //private static final Logger logger = LoggerUtil.getLogger(Customer.class);
 
     // The shared TicketPool that the Customer interacts with
     private final TicketPool ticketPool;
@@ -63,29 +63,13 @@ public class Customer implements Runnable {
     @Override
     public void run() {
         try {
-            // Keep running the customer thread until it's interrupted
             while (!Thread.currentThread().isInterrupted()) {
-                synchronized (ticketPool) { // Synchronize access to the shared ticket pool
-                    // Attempt to remove tickets from the ticket pool based on the retrieval rate
-                    boolean success = ticketPool.removeTickets(retrievalRate);
-                    if (success) {
-                        // Log a success message if tickets were retrieved
-                        logger.info(String.format("Customer retrieved %d tickets.", retrievalRate));
-                    } else {
-                        // Log a warning if there are not enough tickets available for retrieval
-                        logger.warning("Not enough tickets available for retrieval.");
-                    }
-                }
-                // Pause for the defined retrieval interval before attempting another retrieval
+                // Use the purchaseTickets method from TicketPool
+                ticketPool.purchaseTicket();
                 Thread.sleep(retrievalInterval);
             }
         } catch (InterruptedException e) {
-            // Handle thread interruption (e.g., if the simulation is stopped)
-            logger.info("Customer thread interrupted. Exiting...");
-            Thread.currentThread().interrupt(); // Reset the interrupt status
-        } catch (Exception ex) {
-            // Log any unexpected errors that occur during execution
-            logger.severe("Unexpected error in Customer: " + ex.getMessage());
+            System.out.println("Customer thread interrupted.");
         }
     }
 }

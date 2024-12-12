@@ -88,12 +88,8 @@ public class EventSimulationManager {
         );
 
         // Print the initialized simulation details
-        System.out.println("==============================================");
-        System.out.println("| Simulation Initialized for Event: " + config.getTitle());
-        System.out.println("| Vendor: " + config.getVendorName());
-        System.out.println("| Total Tickets: " + config.getTotalTickets());
-        System.out.println("| Max Ticket Capacity: " + config.getMaxTicketCapacity());
-        System.out.println("==============================================\n");
+        System.out.println("Ticket pool created with capacity: " + config.getMaxTicketCapacity() + ".");
+        simulationActive = true;
 
         // Set simulation as active
         simulationActive = true;

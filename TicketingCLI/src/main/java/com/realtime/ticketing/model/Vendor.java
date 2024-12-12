@@ -57,21 +57,13 @@ public class Vendor implements Runnable {
         try {
             // Loop that continues releasing tickets until the thread is interrupted
             while (!Thread.currentThread().isInterrupted()) {
-                synchronized (ticketPool) { // Synchronize access to the shared resource (ticket pool)
-                    ticketPool.addTickets(releaseRate); // Add tickets to the pool
-                    // Log the ticket release event
-                    logger.info(String.format("Vendor added %d tickets.", releaseRate));
-                }
-                // Sleep for the specified interval before releasing more tickets
+                ticketPool.addTickets(releaseRate);
                 Thread.sleep(releaseInterval);
             }
         } catch (InterruptedException e) {
-            // Log the thread interruption event and exit the loop
-            logger.info("Vendor thread interrupted. Exiting...");
-            Thread.currentThread().interrupt(); // Reset the interrupt status
-        } catch (Exception ex) {
-            // Log any unexpected errors
-            logger.severe("Unexpected error in Vendor: " + ex.getMessage());
+            // Properly handle interruption
+            System.out.println("Vendor thread interrupted. Exiting...");
+            Thread.currentThread().interrupt();
         }
     }
 }
