@@ -30,7 +30,8 @@ import {
     MenuItem,
     Select,
     InputLabel,
-    FormControl
+    FormControl,
+    Grid, Card, CardContent
 } from "@mui/material"; // Updated import for MUI v5
 import Sidebar from "../components/Sidebar";
 import {useNavigate} from "react-router-dom";
@@ -116,7 +117,7 @@ const ViewTickets = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchCriteria, setSearchCriteria] = useState("title");
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(9);
     const navigate = useNavigate();
 
     /**
@@ -283,78 +284,109 @@ const ViewTickets = () => {
                     </FormControl>
                 </Box>
 
-                <TableContainer component={Paper} className={classes.tableContainer}>
-                    <Table>
-                        <TableHead>
-                            <TableRow className={classes.tableHeadCell}>
-                                <TableCell>ID</TableCell>
-                                <TableCell>Vendor</TableCell>
-                                <TableCell>Title</TableCell>
-                                <TableCell>Total Tickets</TableCell>
-                                <TableCell>Max Capacity</TableCell>
-                                <TableCell>Release Rate</TableCell>
-                                <TableCell>Retrieval Rate</TableCell>
-                                <TableCell>Simulation Start</TableCell>
-                                <TableCell>Simulation Stop</TableCell>
-                                <TableCell>Update</TableCell>
-                                <TableCell>Delete</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {paginatedTickets.map((ticket) => (
-                                <TableRow key={ticket._id} className={classes.tableRow}>
-                                    <TableCell>{ticket._id?.slice(-5)}</TableCell>
-                                    <TableCell>{ticket.vendor}</TableCell>
-                                    <TableCell>{ticket.title}</TableCell>
-                                    <TableCell>{ticket.totalTickets}</TableCell>
-                                    <TableCell>{ticket.maxTicketCapacity}...</TableCell>
-                                    <TableCell>{ticket.ticketReleaseRate}</TableCell>
-                                    <TableCell>{ticket.customerRetrievalRate}</TableCell>
-                                    <TableCell>
+                <Grid container spacing={3}>
+                    {paginatedTickets.map((ticket) => (
+                        <Grid item xs={12} sm={6} md={4} key={ticket._id}>
+                            <Card
+                                elevation={3}
+                                style={{ borderRadius: '12px', overflow: 'hidden', transition: '0.3s', cursor: 'pointer' }}
+                                onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0px 4px 20px rgba(0, 0, 0, 0.2)'}
+                                onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.1)'}
+                            >
+                                <CardContent>
+                                    <Typography variant="h6" gutterBottom style={{ fontWeight: 'bold', color: '#2A2A3C' }}>
+                                        {ticket.title}
+                                    </Typography>
+                                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                                        <tbody>
+                                        <tr>
+                                            <td style={{ fontWeight: "bold", padding: "5px 10px", color: "#555" }}>ID:</td>
+                                            <td style={{ padding: "5px 10px", color: "#777" }}>{ticket._id?.slice(-5)}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ fontWeight: "bold", padding: "5px 10px", color: "#555" }}>Vendor:</td>
+                                            <td style={{ padding: "5px 10px", color: "#777" }}>{ticket.vendor}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ fontWeight: "bold", padding: "5px 10px", color: "#555" }}>Total Tickets:</td>
+                                            <td style={{ padding: "5px 10px", color: "#777" }}>{ticket.totalTickets}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ fontWeight: "bold", padding: "5px 10px", color: "#555" }}>Max Capacity:</td>
+                                            <td style={{ padding: "5px 10px", color: "#777" }}>{ticket.maxTicketCapacity}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ fontWeight: "bold", padding: "5px 10px", color: "#555" }}>Release Rate:</td>
+                                            <td style={{ padding: "5px 10px", color: "#777" }}>{ticket.ticketReleaseRate}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style={{ fontWeight: "bold", padding: "5px 10px", color: "#555" }}>Retrieval Rate:</td>
+                                            <td style={{ padding: "5px 10px", color: "#777" }}>{ticket.customerRetrievalRate}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'space-between', gap: '0.5rem' }}>
                                         <Button
                                             onClick={() => handleStartSimulation(ticket._id)}
                                             disabled={buttonStates[ticket._id]?.start}
                                             variant="contained"
-                                            color="primary"
-                                            className={classes.actionButton}
+                                            style={{
+                                                backgroundColor: "#28a745",
+                                                color: "white",
+                                                transition: "0.2s",
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#218838"}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#28a745"}
                                         >
                                             Start
                                         </Button>
-                                    </TableCell>
-                                    <TableCell>
                                         <Button
                                             onClick={() => handleStopSimulation(ticket._id)}
                                             disabled={buttonStates[ticket._id]?.stop}
                                             variant="contained"
-                                            color="secondary"
-                                            className={classes.actionButton}
+                                            style={{
+                                                backgroundColor: "#dc3545",
+                                                color: "white",
+                                                transition: "0.2s",
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#c82333"}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#dc3545"}
                                         >
                                             Stop
                                         </Button>
-                                    </TableCell>
-                                    <TableCell>
                                         <Button
-                                            style={{backgroundColor: "#d4ac0d", color: "white"}}
                                             onClick={() => handleUpdate(ticket._id)}
-                                            className={classes.actionButton}
+                                            variant="contained"
+                                            style={{
+                                                backgroundColor: "#ffc107",
+                                                color: "black",
+                                                transition: "0.2s",
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#e0a800"}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#ffc107"}
                                         >
                                             Update
                                         </Button>
-                                    </TableCell>
-                                    <TableCell>
                                         <Button
-                                            style={{backgroundColor: "#e74c3c", color: "white"}}
                                             onClick={() => handleDelete(ticket._id)}
-                                            className={classes.actionButton}
+                                            variant="contained"
+                                            style={{
+                                                backgroundColor: "#e74c3c",
+                                                color: "white",
+                                                transition: "0.2s",
+                                            }}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#d62c1a"}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#e74c3c"}
                                         >
                                             Delete
                                         </Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+
                 <CustomPagination
                     count={filteredTickets.length}
                     page={page}

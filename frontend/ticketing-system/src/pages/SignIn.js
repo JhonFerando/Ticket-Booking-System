@@ -55,7 +55,7 @@ const SignIn = () => {
         e.preventDefault();
 
         // Check for admin credentials before making the API call
-        if (formData.email === "admin@gmail.com" && formData.password === "admin") {
+        if (formData.email === "dharshan@gmail.com" && formData.password === "dharshan") {
             window.location.href = "/view-tickets";
             return;
         }
