@@ -34,6 +34,16 @@ const ticketSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    releaseInterval: {
+        type: Number,
+        required: true,
+        min: 0
+    },
+    retrievalInterval: {
+        type: Number,
+        required: true,
+        min: 0
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Ticket", ticketSchema);

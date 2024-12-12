@@ -82,5 +82,17 @@
     "customerRetrievalInterval": 3000,
     "totalTickets": 1200,
     "price": 0.0
+  },
+  {
+    "eventTicketId": 9,
+    "vendorName": "Kesavan",
+    "title": "Table Tennis",
+    "maxTicketCapacity": 1500,
+    "ticketReleaseRate": 20,
+    "customerRetrievalRate": 15,
+    "ticketReleaseInterval": 2000,
+    "customerRetrievalInterval": 3000,
+    "totalTickets": 1500,
+    "price": 0.0
   }
 ]
