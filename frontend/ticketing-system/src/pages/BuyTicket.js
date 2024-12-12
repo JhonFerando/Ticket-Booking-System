@@ -25,27 +25,28 @@ import {Box, Typography, Card, CardContent, CardActions, Button, Snackbar, Grid}
 import {styled} from '@mui/system';
 import {useLocation} from "react-router-dom";
 
-const RootBox = styled(Box)(({ theme }) => ({
+// Styled components for modern UI
+const RootBox = styled(Box)(({theme}) => ({
     padding: '20px',
-    backgroundColor: '#f0f2f5',
+    backgroundColor: '#f9f9f9',
     minHeight: '100vh',
 }));
 
-const TitleTypography = styled(Typography)(({ theme }) => ({
-    fontFamily: 'Poppins, sans-serif',
-    fontWeight: 'bold',
-    color: '#1a202c',
+const TitleTypography = styled(Typography)(({theme}) => ({
+    fontFamily: 'Roboto, sans-serif',
+    fontWeight: '700',
+    color: '#333',
     textAlign: 'center',
     marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(3),
-    fontSize: '2.5rem',
+    marginBottom: theme.spacing(2),
+    fontSize: '2rem',
 }));
 
-const CardContainer = styled(Grid)(({ theme }) => ({
+const CardContainer = styled(Grid)(({theme}) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: theme.spacing(4),
+    gap: theme.spacing(3),
     marginTop: theme.spacing(3),
 }));
 
@@ -64,35 +65,31 @@ const CustomCard = styled(Card)(({ theme }) => ({
 
 const CardImage = styled('img')({
     width: '100%',
-    height: '180px',
+    height: '200px',
     objectFit: 'cover',
+    // borderTopLeftRadius: '8px',
+    // borderTopRightRadius: '8px',
 });
 
-const CardContentStyled = styled(CardContent)(({ theme }) => ({
+const CardContentStyled = styled(CardContent)(({theme}) => ({
     flexGrow: 1,
-    textAlign: 'center',
+    paddingBottom: theme.spacing(3),
 }));
 
-const CardActionsStyled = styled(CardActions)(({ theme }) => ({
+const CardActionsStyled = styled(CardActions)(({theme}) => ({
     padding: theme.spacing(2),
-    justifyContent: 'center',
 }));
 
-const PurchaseButton = styled(Button)(({ theme }) => ({
-    backgroundImage: 'linear-gradient(45deg, #4caf50, #81c784)',
-    color: '#ffffff',
+const PurchaseButton = styled(Button)(({theme}) => ({
+    backgroundColor: '#ff7043',
+    color: '#fff',
+    fontFamily: 'Arial, sans-serif',
     fontWeight: 'bold',
     width: '100%',
     '&:hover': {
-        backgroundImage: 'linear-gradient(45deg, #388e3c, #66bb6a)',
+        backgroundColor: '#f4511e',
     },
 }));
-
-const SnackbarIcon = styled('div')({
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-});
 
 /**
  * The `RetrieveTicketPage` component fetches and displays available event tickets.
@@ -128,44 +125,11 @@ const RetrieveTicketPage = () => {
                 const response = await axios.get('http://localhost:5000/api/tickets');
                 setTickets(response.data);
             } catch (error) {
-                console.error('Error fetching tickets:', error);
                 setSnackbarMessage('Failed to fetch tickets. Please try again later.');
                 setOpenSnackbar(true);
             }
         };
         fetchTickets();
-    }, []);
-
-    useEffect(() => {
-        const fetchRemainingTickets = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/tickets/remaining');
-
-                const remainingData = response.data?.tickets || [];
-                console.log(remainingData);
-                setTickets((prevTickets) =>
-                    prevTickets.map((ticket) => {
-                        const match = remainingData.find((data) => data.ticketId === ticket._id);
-                        return match
-                            ? {
-                                ...ticket,
-                                remainingTickets: match.ticketsRemaining,
-                                simulationComplete: match.simulationComplete,
-                            }
-                            : { ...ticket, remainingTickets: ticket.totalTickets };
-                    })
-                );
-            } catch (error) {
-                console.error('Error fetching remaining tickets:', error);
-                setSnackbarMessage('Failed to fetch remaining tickets.');
-                setOpenSnackbar(true);
-            }
-        };
-
-        // Poll every 5 seconds
-        const intervalId = setInterval(fetchRemainingTickets, 1000);
-
-        return () => clearInterval(intervalId); // Cleanup on unmount
     }, []);
 
     /**
@@ -205,8 +169,7 @@ const RetrieveTicketPage = () => {
             setSnackbarMessage(response.data.message || 'Ticket retrieved successfully!');
             setOpenSnackbar(true);
         } catch (error) {
-            const errorMessage =
-                error.response?.data?.error || 'An error occurred while retrieving the ticket.';
+            const errorMessage = error.response?.data?.error || 'An error occurred while retrieving the ticket.';
             setSnackbarMessage(errorMessage);
             setOpenSnackbar(true);
         } finally {
@@ -214,10 +177,42 @@ const RetrieveTicketPage = () => {
         }
     };
 
+    useEffect(() => {
+        const fetchRemainingTickets = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/tickets/remaining');
+
+                const remainingData = response.data?.tickets || [];
+                console.log(remainingData);
+                setTickets((prevTickets) =>
+                    prevTickets.map((ticket) => {
+                        const match = remainingData.find((data) => data.ticketId === ticket._id);
+                        return match
+                            ? {
+                                ...ticket,
+                                remainingTickets: match.ticketsRemaining,
+                                simulationComplete: match.simulationComplete,
+                            }
+                            : { ...ticket, remainingTickets: ticket.totalTickets };
+                    })
+                );
+            } catch (error) {
+                console.error('Error fetching remaining tickets:', error);
+                setSnackbarMessage('Failed to fetch remaining tickets.');
+                setOpenSnackbar(true);
+            }
+        };
+
+        // Poll every 5 seconds
+        const intervalId = setInterval(fetchRemainingTickets, 1000);
+
+        return () => clearInterval(intervalId); // Cleanup on unmount
+    }, []);
+
     return (
         <RootBox>
             <TitleTypography variant="h4">
-                Available Tickets
+                Available Show Tickets
             </TitleTypography>
 
             <CardContainer container spacing={3}>
@@ -257,7 +252,6 @@ const RetrieveTicketPage = () => {
                                         ? 'All Tickets Sold'
                                         : `Remaining Tickets: ${ticket.remainingTickets}`}
                                 </Typography>
-
                             </CardContentStyled>
                             <CardActionsStyled>
                                 <PurchaseButton

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
     TextField,
     Button,
@@ -21,6 +21,7 @@ import swal from 'sweetalert';
  * @author Dharshan
  */
 const CreateTicket = () => {
+    // State variables for managing form input values
     const [vendor, setVendor] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -32,22 +33,124 @@ const CreateTicket = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [status, setStatus] = useState('');
     const [errors, setErrors] = useState({});
-    const [releaseInterval, setReleaseInterval] = useState('');
-    const [retrievalInterval, setRetrievalInterval] = useState('');
 
-    const handleNumericChange = (setter, fieldName, min = 0, max = Infinity) => (event) => {
-        const value = event.target.value;
-        if (isNaN(value) || value.includes('.') || parseInt(value, 10) < min || parseInt(value, 10) > max) {
-            setErrors((prevErrors) => ({
-                ...prevErrors,
-                [fieldName]: `Please enter a valid number between ${min} and ${max}.`,
-            }));
-            return;
-        }
-        setter(value);
-        setErrors((prevErrors) => ({ ...prevErrors, [fieldName]: '' }));
+    /**
+     * Handles changes in the vendor input field.
+     * @param {object} event - The event object
+     */
+    const handleVendorChange = (event) => {
+        setVendor(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, vendor: ''}));
     };
 
+    /**
+     * Handles changes in the title input field.
+     * @param {object} event - The event object
+     */
+    const handleTitleChange = (event) => {
+        setTitle(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, title: ''}));
+    };
+
+    /**
+     * Handles changes in the description input field.
+     * @param {object} event - The event object
+     */
+    const handleDescriptionChange = (event) => {
+        setDescription(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, description: ''}));
+    };
+
+    /**
+     * Handles changes in the total tickets input field.
+     * Also updates max ticket capacity to be the same as total tickets.
+     * @param {object} event - The event object
+     */
+    const handleTotalTicketsChange = (event) => {
+        const value = event.target.value;
+        setTotalTickets(value);
+        setMaxTicketCapacity(value);  // Set max ticket capacity to be the same as total tickets
+        setErrors((prevErrors) => ({...prevErrors, totalTickets: ''}));
+    };
+
+    /**
+     * Handles changes in the max ticket capacity input field.
+     * Also updates total tickets to be the same as max ticket capacity.
+     * @param {object} event - The event object
+     */
+    const handleMaxTicketCapacityChange = (event) => {
+        const value = event.target.value;
+        setMaxTicketCapacity(value);
+        setTotalTickets(value);  // Set total tickets to be the same as max ticket capacity
+        setErrors((prevErrors) => ({...prevErrors, maxTicketCapacity: ''}));
+    };
+
+    /**
+     * Handles changes in the ticket release rate input field.
+     * @param {object} event - The event object
+     */
+    const handleTicketReleaseRateChange = (event) => {
+        setTicketReleaseRate(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, ticketReleaseRate: ''}));
+    };
+
+    /**
+     * Handles changes in the customer retrieval rate input field.
+     * @param {object} event - The event object
+     */
+    const handleCustomerRetrievalRateChange = (event) => {
+        setCustomerRetrievalRate(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, customerRetrievalRate: ''}));
+    };
+
+    /**
+     * Handles changes in the price input field.
+     * @param {object} event - The event object
+     */
+    const handlePriceChange = (event) => {
+        setPrice(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, price: ''}));
+    };
+
+    /**
+     * Handles changes in the status input field.
+     * @param {object} event - The event object
+     */
+    const handleStatusChange = (event) => {
+        setStatus(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, status: ''}));
+    };
+
+    /**
+     * Handles changes in the image URL input field.
+     * @param {object} event - The event object
+     */
+    const handleImageUrlChange = (event) => {
+        setImageUrl(event.target.value);
+        setErrors((prevErrors) => ({...prevErrors, imageUrl: ''}));
+    };
+
+    /**
+     * Validates the form before submission.
+     * @returns {object} - An object containing the validation errors
+     */
+    const validateForm = () => {
+        const newErrors = {};
+        if (!vendor) newErrors.vendor = 'Vendor is required.';
+        if (!title) newErrors.title = 'Title is required.';
+        if (!description) newErrors.description = 'Description is required.';
+        if (!totalTickets) newErrors.totalTickets = 'Total tickets are required.';
+        if (!ticketReleaseRate) newErrors.ticketReleaseRate = 'Ticket release rate is required.';
+        if (!customerRetrievalRate) newErrors.customerRetrievalRate = 'Customer retrieval rate is required.';
+        if (!maxTicketCapacity) newErrors.maxTicketCapacity = 'Max ticket capacity is required.';
+        if (!price) newErrors.price = 'Price is required.';
+        return newErrors;
+    };
+
+    /**
+     * Handles the form submission by validating the form and sending the ticket data to the backend.
+     * @param {object} event - The event object
+     */
     const handleSubmit = async (event) => {
         event.preventDefault();
         const validationErrors = validateForm();
@@ -65,8 +168,6 @@ const CreateTicket = () => {
             customerRetrievalRate,
             maxTicketCapacity,
             price,
-            releaseInterval,
-            retrievalInterval,
             created_date: new Date(),
             imageUrl,
         };
@@ -74,40 +175,53 @@ const CreateTicket = () => {
         try {
             await axios.post('http://localhost:5000/api/tickets', newTicket);
             swal('Success', 'New ticket added successfully!', 'success');
-            resetForm();
+            setVendor('');
+            setTitle('');
+            setDescription('');
+            setTotalTickets('');
+            setTicketReleaseRate('');
+            setCustomerRetrievalRate('');
+            setMaxTicketCapacity('');
+            setPrice('');
+            setImageUrl('');
+            setErrors({});
         } catch (error) {
+            console.error(error);
             swal('Error', 'Something went wrong. Please try again.', 'error');
         }
     };
 
-    const validateForm = () => {
-        const newErrors = {};
-        if (!vendor) newErrors.vendor = 'Vendor is required.';
-        if (!title) newErrors.title = 'Title is required.';
-        if (!description) newErrors.description = 'Description is required.';
-        if (!totalTickets) newErrors.totalTickets = 'Total tickets are required.';
-        if (!ticketReleaseRate) newErrors.ticketReleaseRate = 'Ticket release rate is required.';
-        if (!customerRetrievalRate) newErrors.customerRetrievalRate = 'Customer retrieval rate is required.';
-        if (!maxTicketCapacity) newErrors.maxTicketCapacity = 'Max ticket capacity is required.';
-        if (!price) newErrors.price = 'Price is required.';
-        if (!releaseInterval) newErrors.releaseInterval = 'Release interval is required.';
-        if (!retrievalInterval) newErrors.retrievalInterval = 'Retrieval interval is required.';
-        return newErrors;
+    /**
+     * Handles numeric input validation for fields like total tickets, ticket release rate, etc.
+     * @param {function} setter - The setter function to update the state
+     * @param {string} fieldName - The name of the field being validated
+     * @param {number} min - The minimum valid value
+     * @param {number} max - The maximum valid value
+     * @returns {function} - A function to handle the numeric input change
+     */
+    const handleNumericChange = (setter, fieldName, min = 0, max = Infinity) => (event) => {
+        const value = event.target.value;
+        if (isNaN(value) || value.includes('.') || parseInt(value, 10) < min || parseInt(value, 10) > max) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                [fieldName]: `Please enter a valid number between ${min} and ${max}.`,
+            }));
+            return;
+        }
+
+        setter(value);
+        setErrors((prevErrors) => ({...prevErrors, [fieldName]: ''}));
     };
 
-    const resetForm = () => {
-        setVendor('');
-        setTitle('');
-        setDescription('');
-        setTotalTickets('');
-        setTicketReleaseRate('');
-        setCustomerRetrievalRate('');
-        setMaxTicketCapacity('');
-        setPrice('');
-        setReleaseInterval('');
-        setRetrievalInterval('');
-        setImageUrl('');
-        setErrors({});
+    /**
+     * Prevents non-numeric input in numeric fields.
+     * @param {object} event - The keypress event object
+     */
+    const handleKeyPress = (event) => {
+        const key = event.key;
+        if (!/^[0-9]$/.test(key)) {
+            event.preventDefault();
+        }
     };
 
     return (
