@@ -1,17 +1,19 @@
 [
   {
     "eventTicketId": 1,
-    "title": "Basketball",
+    "vendorName": "Ravindran",
+    "title": "Badmiton",
     "maxTicketCapacity": 500,
     "ticketReleaseRate": 2,
     "customerRetrievalRate": 3,
-    "ticketReleaseInterval": 0,
-    "customerRetrievalInterval": 0,
-    "totalTickets": 600,
+    "ticketReleaseInterval": 2000,
+    "customerRetrievalInterval": 2000,
+    "totalTickets": 500,
     "price": 5000.0
   },
   {
     "eventTicketId": 2,
+    "vendorName": "Dharshan",
     "title": "Volleyball",
     "maxTicketCapacity": 1500,
     "ticketReleaseRate": 2,
@@ -23,6 +25,7 @@
   },
   {
     "eventTicketId": 3,
+    "vendorName": "Sheshan",
     "title": "Cricket",
     "maxTicketCapacity": 500,
     "ticketReleaseRate": 2,
@@ -34,18 +37,8 @@
   },
   {
     "eventTicketId": 4,
+    "vendorName": "Tharanesh",
     "title": "Rugby",
-    "maxTicketCapacity": 1500,
-    "ticketReleaseRate": 2,
-    "customerRetrievalRate": 3,
-    "ticketReleaseInterval": 0,
-    "customerRetrievalInterval": 0,
-    "totalTickets": 600,
-    "price": 3000.0
-  },
-  {
-    "eventTicketId": 5,
-    "title": "Tennis",
     "maxTicketCapacity": 1500,
     "ticketReleaseRate": 2,
     "customerRetrievalRate": 3,
@@ -63,6 +56,30 @@
     "customerRetrievalRate": 3,
     "ticketReleaseInterval": 2000,
     "customerRetrievalInterval": 2000,
+    "totalTickets": 1200,
+    "price": 0.0
+  },
+  {
+    "eventTicketId": 7,
+    "vendorName": "Jhoseph",
+    "title": "Sportsmeet",
+    "maxTicketCapacity": 1500,
+    "ticketReleaseRate": 20,
+    "customerRetrievalRate": 30,
+    "ticketReleaseInterval": 2000,
+    "customerRetrievalInterval": 3000,
+    "totalTickets": 1500,
+    "price": 0.0
+  },
+  {
+    "eventTicketId": 8,
+    "vendorName": "Don",
+    "title": "Musical show",
+    "maxTicketCapacity": 1200,
+    "ticketReleaseRate": 20,
+    "customerRetrievalRate": 30,
+    "ticketReleaseInterval": 2000,
+    "customerRetrievalInterval": 3000,
     "totalTickets": 1200,
     "price": 0.0
   }
