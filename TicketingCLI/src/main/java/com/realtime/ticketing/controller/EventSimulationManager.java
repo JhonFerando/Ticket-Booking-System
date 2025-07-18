@@ -54,8 +54,6 @@ public class EventSimulationManager {
         System.out.println("Ticket pool created with capacity: " + config.getMaxTicketCapacity() + ".");
         simulationActive = true;
 
-        simulationActive = true;
-
         Thread vendorThread = new Thread(new Vendor(ticketPool, config.getTicketReleaseRate(), config.getTicketReleaseInterval()));
         Thread customerThread = new Thread(new Customer(ticketPool, config.getCustomerRetrievalRate(), config.getCustomerRetrievalInterval()));
 
