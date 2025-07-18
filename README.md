@@ -250,15 +250,3 @@ frontend/
    ```
 4. Push your branch and submit a pull request.
 
----
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
-## Author
-
-- **Name**: Ravindran Dharshan
-- **GitHub**: [https://github.com/DharshanSR](https://github.com/DharshanSR)
-
----
